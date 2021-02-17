@@ -94,13 +94,38 @@ f^{\ast}
 0, 
 \begin{pmatrix}
 K & K^{\ast}\newline
-K^{\ast} & K^{\ast \ast}
+K^{\ast \top} & K^{\ast \ast}
 \end{pmatrix}
 \end{pmatrix}$$
 
 where $K^{\ast} = \kappa(X,X^{\ast})$ and $K^{\ast \ast} = \kappa(X^{\ast},X^{\ast})$. With $N$ training data and $N^{\ast}$ new input data $K$ is a $N×N$ matrix , $K^{\ast}$ a $N×N^{\ast}$ matrix and $K^{\ast \ast}$ a $N^{\ast}×N^{\ast}$ matrix. 
 
+We've known conditional distribution rules.
 
+
+As a result, the predictive Gaussian Distribution is 
+
+$$p(f^{\ast} | X^{\ast},X,f) = \mathcal{N}(f^{\ast} | \mu^{\ast}, \Sigma^{\ast})$$
+
+$$\mu^{\ast} = K^{\ast \top} K^{-1} f$$
+
+$$\Sigma^{\ast} = K^{\ast \ast} - K^{\ast \top} K^{-1} K^{\ast}$$
+
+However, the above equations don't consider the effect of noise. Suppose we need to evalutate a noisy model $y=f+\epsilon$ where $\epsilon \sim \mathcal{N}(0, \sigma_y^2 I)$ is the noise. The noise follows normal distribution and has a covariance matrix $\sigma_y^2 I$. Thus, the predictive distribution is 
+
+$$p(f^{\ast} | X^{\ast},X,y) = \mathcal{N}(f^{\ast} | \mu^{\ast}, \Sigma^{\ast})$$
+
+$$\mu^{\ast} = K^{\ast \top} K_{y}^{-1} y$$
+
+$$\Sigma^{\ast} = K^{\ast \ast} - K^{\ast \top} K_{y}^{-1} K^{\ast}$$
+
+where $K_{y}^{-1} = K + \sigma_y^2 I$(linearilty of Gaussian distribution). Finally, we also want to replace the noise-free prediction $f^{\ast}$ with noisy prediction $y^{\ast}$. We can derive
+
+$$p(y^{\ast} | X^{\ast},X,y) = \mathcal{N}(y^{\ast} | \mu^{\ast}, \Sigma^{\ast} + \sigma_y^2 I)$$
+
+Finally, we get the probability of noisy prediction $y^{\ast}$ which conditions on noisy training dataset $X,y$ and test dataset $X^{\ast}$.
+
+---
 # Bayesian Optimization
 
 In many machine learning or optimization problem, we need to optimize an unkown object function $f$. One of the solutions to optimize function $f$ is **Bayesian Optimization**. Bayesian Optimization assume the object function $f$ follows a distribution or prior model. This prior model is called **surrogate model**. We sample from the object function $f$ and approximate the function $f$ with surrogate model. The extra information like uncertainty provided from surrogate model contribute to the sample-efficiency of Bayesian optimization. In the mean time, we also use the **acquisition function** to choose the next sampling point.
@@ -180,9 +205,6 @@ We always choose the next evaluating point $x_t$ which has highest $a_{EI}(x|D_{
 
 Intuitively, the term $(f' - \mu(x))\phi(f'; \mu(x), \kappa(x, x))$ can be taken as exploitation(it encourage to evaluate the point with higher reward, lower $\mu(x)$), since it means how much advantage does point $x$ has? The term $\kappa(x, x) \mathcal{N}(f'; \mu(x), \kappa(x, x))$ represents how much uncertainty does point $x$ has?, so it can be viewed as exploration(it encourage to evaluate the point with higher uncertainty, higher $\kappa(x, x)$). **EI algorithm can trade off the exploration and exploitation automatically** and also the most popular algorithm of Bayesian Optimization.
 
-## Entropy Search
-
-
 ## Bayesian Upper Confident Bound(UCB) Method
 Before diving to Bayesian UCB method, please understand the bandit problem first. 
 
@@ -191,6 +213,8 @@ Bayesian UCB inherents UCB. They both give a relation between upper bound and pr
 For example, it is common that we know if we sample values from Gaussian distribution, 95% of them are between the mean plus 2 standard deviation and mean subtract 2 standard deviation.
 
 ![](/img/gp/gaussian_dist_conf.png)
+
+## Entropy Search
 
 # Reference 
 
@@ -245,3 +269,5 @@ For example, it is common that we know if we sample values from Gaussian distrib
 - [The Kalman Filter [Control Bootcamp]](https://www.youtube.com/watch?v=s_9InuQAx-g)
 
   The video provide the mathmatical proof for Kalman Filter.
+- [(PP 6.9) Conditional distributions of a Gaussian](https://www.youtube.com/watch?v=G6_OdMXpiVY)
+- [Deriving the conditional distributions of a multivariate normal distribution](https://stats.stackexchange.com/questions/30588/deriving-the-conditional-distributions-of-a-multivariate-normal-distribution)
