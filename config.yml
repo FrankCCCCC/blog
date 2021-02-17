@@ -1,0 +1,24 @@
+baseURL: "http://example.org/"
+languageCode: "en-us"
+title: "SY CHOU's LOG"
+theme: "papermod"
+
+params:
+    homeInfoParams:
+        Title: Be Ambitious
+        Content: Can be Info, links, about...
+
+    socialIcons:
+        - name: "FB"
+          url: "<link>"
+        - name: "<platform 2>"
+          url: "<link2>"
+
+    fuseOpts:
+        isCaseSensitive: false
+        shouldSort: true
+        location: 0
+        distance: 1000
+        threshold: 0.4
+        minMatchCharLength: 0
+        keys: ["title", "permalink", "summary", "content"]
