@@ -5,6 +5,9 @@ on:
     branches:
       - master
       # - exampleSite
+  push:
+    branches:
+      - master
   workflow_dispatch:
     # manual run
 
