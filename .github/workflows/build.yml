@@ -1,18 +1,15 @@
-name: Build GH-Pages
+name: Build
 
 on:
-  push:
-    paths-ignore:
-      - 'images/**'
-      - 'LICENSE'
-      - 'README.md'
+  pull_request:
     branches:
+      - master
       - exampleSite
   workflow_dispatch:
     # manual run
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
@@ -33,9 +30,3 @@ jobs:
 
       - name: Build
         run: hugo --buildDrafts --gc --verbose --minify
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./public

@@ -37,6 +37,9 @@ The dotted line are the functions sampled from the Gaussian process. Each line g
 
 Note that the explaination above is from the point of view of function approximation. From the perspective of random process, the Gaussian process can be regarded as a time-variant system that the distribution is changing along the time.
 
+![](/img/gp/gp_posterior.png)
+![](/img/gp/gp_3d.png)
+
 ## Definition
 
 A Gaussian process is a time continuous stochastic process ${X_t; t \in T}$ is Gaussian if and only if for every finite set of indices $t_1, ..., t_k$ in the index set $T$, $X_{t1},...X_{tk} = (X_{t1}, ..., X_{tk})$ is a multivariate Gaussian random variable.
@@ -68,6 +71,8 @@ Some common kernels are:
 
 - Periodic Kernel
   
+  Suitable for periodic relation
+
   $K_{P}(X_i, X_j) = e^{-\frac{2 \sin^2 (\frac{d}{2})}{\ell^2}}$
   <!-- ![](/img/gp/periodic_kernel.svg) -->
 
@@ -75,6 +80,11 @@ Some common kernels are:
   
   $K_{Poly}(X_i, X_j) = ( X_i^{\top}X_j+ c)^d$
   <!-- ![](/img/gp/polynomial_kernel.svg) -->
+
+- Neural Network Kernel
+  
+  Model the neural network as GP, aka neural network Gaussian Process(NNGP)
+  For more detail, please refer to [this slide](https://www.brown.edu/research/projects/crunch/sites/brown.edu.research.projects.crunch/files/uploads/Pang-NNGP-Crunch-Seminar.pdf).
 
 For more detail, please refer to [A Visual Exploration of Gaussian Processes](https://distill.pub/2019/visual-exploration-gaussian-processes/). You can play with interactive widgets on the website.
 
