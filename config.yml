@@ -2,18 +2,21 @@ baseURL: "https://frankccccc.github.io/blog/"
 languageCode: "en-us"
 title: "Golden Hat"
 theme: "papermod"
+
 canonifyURLs: true
 
 params:
     homeInfoParams:
         Title: SY Chou's Blog
-        Content: Then wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry "Lover, gold-hatted, high-bouncing lover, I must have you!
+        Content: Then wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry "Lover, gold-hatted, high-bouncing lover, I must have you!"  <<The Great Gatsby>>
 
     socialIcons:
-        - name: "FB"
-          url: "<link>"
-        - name: "<platform 2>"
-          url: "<link2>"
+        - name: "email"
+          url: "mailto:quantumplanz@outlook.com"
+        - name: "github"
+          url: "https://github.com/FrankCCCCC"
+        - name: "linkedin"
+          url: "https://www.linkedin.com/in/%E8%81%96%E8%AB%BA-%E5%91%A8-ba89b2184/"
 
     fuseOpts:
         isCaseSensitive: false
