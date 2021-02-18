@@ -4,7 +4,7 @@ date: 2021-02-16T17:28:58+08:00
 draft: true
 
 cover:
-    image: "/img/just_imgs/city_station.jpg"
+    image: "img/just_imgs/city_station.jpg"
     relative: false # To use relative path for cover image, used in hugo Page-bundles
 ---
 
