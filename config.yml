@@ -5,7 +5,27 @@ theme: "papermod"
 
 canonifyURLs: true
 
+menu:
+    main:
+        - name: Search
+          url: search/
+          weight: 10
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
+
 params:
+    env: production
+    author: SY Chou
+    hidemeta: false
+    ShowBreadCrumbs: true
+    ShowReadingTime: true
+    comments: true
+    ShowPostNavLinks: true
+
     homeInfoParams:
         Title: SY Chou's Blog
         Content: Then wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry "Lover, gold-hatted, high-bouncing lover, I must have you!"  <<The Great Gatsby>>
@@ -17,6 +37,20 @@ params:
           url: "https://github.com/FrankCCCCC"
         - name: "linkedin"
           url: "https://www.linkedin.com/in/%E8%81%96%E8%AB%BA-%E5%91%A8-ba89b2184/"
+
+    # profileMode:
+    #     enabled: true
+    #     title: "SY Chou's Blog" # optional default will be site title
+    #     subtitle: "Then wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry 'Lover, gold-hatted, high-bouncing lover, I must have you!''  <<The Great Gatsby>>"
+    #     # imageUrl: "<image link>" # optional
+    #     imageTitle: "<title of image as alt>" # optional
+    #     imageWidth: 120 # custom size
+    #     imageHeight: 120 # custom size
+    #     # buttons:
+    #     #   - name: Archive
+    #     #     url: "/archive"
+    #     #   - name: Github
+    #     #     url: "https://github.com/"
 
     fuseOpts:
         isCaseSensitive: false
