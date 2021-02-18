@@ -6,8 +6,8 @@ canonifyURLs: true
 
 params:
     homeInfoParams:
-        Title: Be Ambitious
-        Content: Can be Info, links, about...
+        Title: SY Chou's Blog
+        Content: Then wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry "Lover, gold-hatted, high-bouncing lover, I must have you!
 
     socialIcons:
         - name: "FB"
