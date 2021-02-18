@@ -7,7 +7,7 @@ on:
       - 'LICENSE'
       - 'README.md'
     branches:
-      - exampleSite
+      - master
   workflow_dispatch:
     # manual run
 
@@ -18,7 +18,7 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
         with:
-          ref: exampleSite
+          ref: master
 
       - name: Get Theme
         run: git submodule update --init --recursive
