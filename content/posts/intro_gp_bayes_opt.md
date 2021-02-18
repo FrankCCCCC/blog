@@ -156,15 +156,15 @@ In many machine learning or optimization problem, we need to optimize an unkown 
 ## Definition
 Formaly, suppose we have a block-box function $f : X \to R$ that we with to minimize on some domain $x \subseteq X$ . That is, the Bayesian optimization wish to find
 
-### `$\begin{equation} x^{\ast} = \mathop{\arg\max}_{x \in X} \ \ f(x) \end{equation}$`
+$$\begin{equation} x^{\ast} = \mathop{\arg\max}_{x \in X} \ \ f(x) \end{equation}$$
 
 If we use Gaussian Process as prior(Surrogate Model), we can get
 
-$p(f) = GP(f; µ, K).$
+$$p(f) = GP(f; µ, K)$$
 
 Given observations $D = (x,f)$, we can condition our distribution on $D$ as usual
 
-$p(f | D) = GP(f; µ_{f|D}, K_{f|D})$
+$$p(f | D) = GP(f; µ_{f|D}, K_{f|D})$$
 
 ## Surrogate Model
 A popular model is Gaussian Process. Gaussian process defines a prior over functions and provides a flexiable, powerful and, smooth model which is especially suitable for dynamic models.
