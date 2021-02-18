@@ -9,13 +9,32 @@ menu:
     main:
         - name: Search
           url: search/
+          weight: 5
+        - identifier: series
+          name: Series
+          url: series
+          weight: 7
+        - identifier: categories
+          name: Categories
+          url: categories/
           weight: 10
+        - identifier: tags
+          name: Tags
+          url: tags/
+          weight: 20
 
+# Search Configs
 outputs:
     home:
         - HTML
         - RSS
         - JSON # is necessary
+
+# Catergory Configs
+taxonomies:
+    category: categories
+    tag: tags
+    series: series
 
 params:
     env: production
