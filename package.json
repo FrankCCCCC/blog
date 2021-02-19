@@ -1,0 +1,13 @@
+{
+    "name": "blog_golden_hat",
+    "version": "1.0.0",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "hugo -D",
+        "serve": "hugo serve -D --disableFastRender"
+    },
+    "keywords": [],
+    "author": "SY Chou",
+    "license": "ISC",
+    "homepage": "https://frankccccc.github.io/blog/"
+}

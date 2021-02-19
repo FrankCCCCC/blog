@@ -3,10 +3,10 @@ title: "A Very Brief Introduction to Gaussian Process and Bayesian Optimization"
 date: 2021-02-16T17:28:58+08:00
 draft: False
 author: SY Chou
-description: "Introduce"
+# description: "Introduce"
 categories: ["numerical optimization", "machine learning"]
 series: []
-tags: ["gaussian process", "bayesian optimization", "machine learning", "random process", "numerical optimization"]
+tags: ["gaussian process", "bayesian optimization", "machine learning", "random process", "numerical optimization", "bayes"]
 
 cover:
     image: "img/just_imgs/ny_skyline.jpg"
