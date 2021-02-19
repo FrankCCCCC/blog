@@ -13,3 +13,6 @@ cover:
     relative: false
 ---
 
+# Reference
+- [StackExchange - Product of two multivariate normal distribution](https://math.stackexchange.com/questions/3495719/product-of-two-multivariate-normal-distribution)
+- [Deep Gaussian Processes](http://inverseprobability.com/talks/notes/deep-gaussian-processes.html)
