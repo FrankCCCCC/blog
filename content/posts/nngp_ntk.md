@@ -9,7 +9,7 @@ series: []
 tags: ["gaussian process", "deep learning", "machine learning", "bayes", "NNGP", "NTK"]
 
 cover:
-    image: "img/just_imgs/ny_skyline.jpg"
+    image: "img/just_imgs/wave_process.jpg"
     relative: false
 ---
 
