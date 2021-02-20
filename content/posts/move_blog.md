@@ -114,6 +114,13 @@ $\begin{equation} x_t = \mathop{\arg\max}_{x \in X} \ \ a_{PI}(x|D_{1:t−1}) \e
 canonifyURLs: true
 ```
 
+## 安裝Utterances留言板
+
+[Utterances Official](https://utteranc.es/)
+
+相較於GitTalk, GitMent等基於Github Issue的留言插件，Utterances要求的權限最少，因此決定採用。
+
+
 # Reference
 
 - [Render LaTeX math expressions in Hugo with MathJax 3](https://geoffruddock.com/math-typesetting-in-hugo/)
