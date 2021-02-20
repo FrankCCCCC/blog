@@ -105,8 +105,19 @@ Some common kernels are:
 
 - Neural Network Kernel
   
-  Model the neural network as GP, aka neural network Gaussian Process(NNGP)
-  For more detail, please refer to [this slide](https://www.brown.edu/research/projects/crunch/sites/brown.edu.research.projects.crunch/files/uploads/Pang-NNGP-Crunch-Seminar.pdf).
+  Model the neural network as GP, aka neural network Gaussian Process(NNGP). Intuitively, the kernel of NNGP compute the distance between the output vectors of 2 input data points.
+
+  We define the following functions as neural networks with fully-conntected layers:
+
+  $$z_{i}^{1}(x) = b_i^{1} + \Sigma_{j=1}^{N_1} \ W_{ij}^{1}x_j^1(x), \ \ x_{j}^{1}(x) = \phi(b_i^{0} + \Sigma_{k=1}^{d_{in}} \ W_{ik}^{0}x_k(x))$$
+
+  where $b_i^{1}$ is the $i$th-bias of the second layer(the same as first hidden layer), $W_{ij}^{1}$ is the $i$th-weights of the first layer(the same as input layer) , function $\phi$ is the activation function, and $x$ is the input data of the neural network. As a result,  
+
+  Thus, the kernel of $l$-th layer is
+
+  $$K_{NN}^l(x, x') = \sigma_b^2 + \sigma_w^2 \mathbb{E}_{z_i^{l-1} \sim GP(0, K^{l-1})}[\phi(z_i^{l-1}(x)) \phi(z_i^{l-1}(x'))]$$
+
+  For more detail, please refer to [this slide](https://www.brown.edu/research/projects/crunch/sites/brown.edu.research.projects.crunch/files/uploads/Pang-NNGP-Crunch-Seminar.pdf) and the paper [Deep Neural Networks as Gaussian Processes](https://arxiv.org/abs/1711.00165).
 
 For more detail, please refer to [A Visual Exploration of Gaussian Processes](https://distill.pub/2019/visual-exploration-gaussian-processes/). You can play with interactive widgets on the website.
 

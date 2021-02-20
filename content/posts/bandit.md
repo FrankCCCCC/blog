@@ -51,3 +51,10 @@ Since we want to measure the confidence of the upper bound, we can derive the co
 $$ U_t(a) = \sqrt{\frac{2 \log t}{N_t(a)}} \text{ and } a^{UCB1}t = \arg\max{a \in \mathcal{A}} Q(a) + \sqrt{\frac{2 \log t}{N_t(a)}} $$
 
 <!-- ![](img/gp/ucb1.png) -->
+
+## Epsilon Greedy
+
+## Thompson Sampling
+
+# Reference
+- [Lil'Log - The Multi-Armed Bandit Problem and Its Solutions](https://lilianweng.github.io/lil-log/2018/01/23/the-multi-armed-bandit-problem-and-its-solutions.html)
