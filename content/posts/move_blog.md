@@ -5,7 +5,7 @@ draft: false
 
 categories: ["front-end", "diary"]
 series: []
-tags: ["front-end", "hugo", "blog", "diary"]
+tags: ["front-end", "hugo", "blog", "diary", "Utterance"]
 
 cover:
     image: "img/just_imgs/city_station.jpg"
@@ -118,7 +118,7 @@ canonifyURLs: true
 
 [Utterances Official](https://utteranc.es/)
 
-相較於GitTalk, GitMent等基於Github Issue的留言插件，Utterances要求的權限最少，因此決定採用。
+相較於GitTalk, GitMent等基於Github Issue的留言插件，Utterances要求的權限最少，因此決定採用。設定安裝可參考[此篇](https://www.dazhuanlan.com/2019/12/05/5de8934e6f081/)
 
 
 # Reference

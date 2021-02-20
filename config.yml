@@ -4,6 +4,7 @@ title: "Golden Hat"
 theme: "papermod"
 
 canonifyURLs: true
+enableInlineShortcodes: true
 
 menu:
     main:
@@ -41,6 +42,7 @@ params:
     author: SY Chou
     defaultTheme: dark
     disableThemeToggle: false
+    enableEmoji: true
     hidemeta: false
     ShowBreadCrumbs: true
     ShowReadingTime: true
