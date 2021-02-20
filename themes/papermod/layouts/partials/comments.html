@@ -3,3 +3,66 @@
 to add comments read => https://gohugo.io/content-management/comments/
 -->
 <!-- Comments area end -->
+<!-- {{- if .Site.Params.utter.repo -}}
+    <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= '{{ .Site.Params.utter.repo }}'
+        issue-term= "{{ .Site.Params.utter.issueTerm }}"
+        theme= '{{ .Site.Params.utter.theme }}'
+        crossorigin= "anonymous"
+        async>
+    </script> 
+{{- end }} -->
+
+{{- if .Site.Params.utter.repo -}}
+{{ $light_theme := .Site.Params.comment_light_theme}}
+{{ $dark_theme := .Site.Params.comment_dark_theme}}
+{{ $theme := $light_theme }}
+
+{{- /*  theme-toggle is enabled  */}}
+{{- if (not .Site.Params.disableThemeToggle) }}
+
+{{- /*  theme is light  */}}
+{{- if (eq .Site.Params.defaultTheme "light") }}
+{{ $theme = $light_theme }}
+
+{{- /*  theme is dark  */}}
+{{- else if (eq .Site.Params.defaultTheme "dark") }}
+{{ $theme = $dark_theme }}
+
+{{- else }}
+{{- /*  theme is auto  */}}
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        // document.body.classList.add('dark');
+        {{ $theme = $dark_theme }}
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        // document.body.classList.remove('dark')
+        {{ $theme = $light_theme }}
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // document.body.classList.add('dark');
+        {{ $theme = $dark_theme }}
+    }
+
+</script>
+{{- end }}
+{{- /*  theme-toggle is disabled and theme is auto  */}}
+{{- else if (and (ne .Site.Params.defaultTheme "light") (ne .Site.Params.defaultTheme "dark"))}}
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // document.body.classList.add('dark');
+        {{ $theme = $dark_theme }}
+    }
+
+</script>
+{{- end }}
+    <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= '{{ .Site.Params.utter.repo }}'
+        issue-term= "{{ .Site.Params.utter.issueTerm }}"
+        theme= {{$theme}}
+        crossorigin= "anonymous"
+        async>
+        console.log($theme)
+    </script> 
+{{- end }}

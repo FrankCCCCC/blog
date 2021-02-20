@@ -39,11 +39,16 @@ taxonomies:
 params:
     env: production
     author: SY Chou
+    defaultTheme: dark
+    disableThemeToggle: false
     hidemeta: false
     ShowBreadCrumbs: true
     ShowReadingTime: true
     comments: true
     ShowPostNavLinks: true
+
+    comment_light_theme: github-light
+    comment_dark_theme: photon-dark
 
     homeInfoParams:
         Title: SY Chou's Blog
@@ -79,3 +84,9 @@ params:
         threshold: 0.4
         minMatchCharLength: 0
         keys: ["title", "permalink", "summary", "content"]
+    
+    utter:
+      enable: true
+      repo: frankccccc/blog
+      issueTerm: title
+      # theme: github-light # Same as defaultTheme automatically
