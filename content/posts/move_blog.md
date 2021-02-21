@@ -195,3 +195,4 @@ canonifyURLs: true
 - [使用Hugo+Github Pages建置Blog](https://www.jianshu.com/p/58c644011f7d)
 - [git submodule 教學](https://medium.com/@kmsh3ng/git-submodule-%E6%95%99%E5%AD%B8-96ab0255c88c)
 - [Hugo Theme: adityatelange/hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod)
+- [List of LaTeX mathematical symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
