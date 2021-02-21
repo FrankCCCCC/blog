@@ -156,6 +156,7 @@ Flow
 - [Let it flow - Gradient flow and gradient descent](http://awibisono.github.io/2016/06/13/gradient-flow-gradient-descent.html)
 
 - [Max Planck Science - Gradient Flow I](https://www.youtube.com/watch?v=pesXn-qwMvQ)
+- [StackExchange - gradient flow and what is, for example, L2 gradient?](https://math.stackexchange.com/questions/156236/gradient-flow-and-what-is-for-example-l2-gradient)
 
 Notebook
 - [Colab Notebook](https://colab.research.google.com/drive/1tLCfu0DCqN3RxLHA9rIARjBtC1VOHFNg?usp=sharing)
