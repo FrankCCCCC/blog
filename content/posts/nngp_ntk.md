@@ -245,4 +245,6 @@ Flow
 
 - [Max Planck Science - Gradient Flow I](https://www.youtube.com/watch?v=pesXn-qwMvQ)
 - [StackExchange - gradient flow and what is, for example, L2 gradient?](https://math.stackexchange.com/questions/156236/gradient-flow-and-what-is-for-example-l2-gradient)
-- 
+
+Taylor Expansion
+- [Taylor series expansion](http://fourier.eng.hmc.edu/e176/lectures/NM/node45.html)
