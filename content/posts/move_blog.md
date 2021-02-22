@@ -8,7 +8,7 @@ series: []
 tags: ["front-end", "Hugo", "blog", "diary", "Utterance"]
 
 cover:
-    image: "img/just_imgs/city_station.jpg"
+    image: "img/just_imgs/taipei3.jpg"
     relative: false # To use relative path for cover image, used in hugo Page-bundles
 ---
 
