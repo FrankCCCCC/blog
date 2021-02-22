@@ -231,6 +231,8 @@ Gaussian Distribution
 
 NNGP
 - [Deep Gaussian Processes](http://inverseprobability.com/talks/notes/deep-gaussian-processes.html)
+- [Gonzalo Mateo García - Deep Neural Networks as Gaussian Processes](https://www.uv.es/gonmagar/blog/2019/01/21/DeepNetworksAsGPs)
+- [Deep Gaussian Processes for Machine Learning](https://pub.towardsai.net/deep-gaussian-processes-for-machine-learning-4bd3803f00f7)
 
 NTK
 - [Understanding the Neural Tangent Kernel By Rajat's Blog](https://rajatvd.github.io/NTK/)
