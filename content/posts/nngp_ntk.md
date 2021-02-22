@@ -16,8 +16,8 @@ cover:
 # Neural Network Gaussian Process(NNGP)
 
 # Neural Tangent Kernel(NTK)
-If I have to summary NTK in a sentence, I would say
-# *"NTK represent the changes of the weights before and after the gradient descent update"*
+
+# *"In short, NTK represent the changes of the weights before and after the gradient descent update"*
 
 Let's start the journey of revealing the black-box neural networks.
 
@@ -55,7 +55,7 @@ We've known the Taylor expansion is
 
 $$f(x) = \Sigma_{n=0}^{\infty} \ \frac{f^{n}(a)}{n!} (x - a)^{n}$$
 
-A function $f(w)$ expanding on the $w_0$ with first order approximation is 
+A function $f(w)$ expanded on the $w_0$ with first order approximation is 
 
 $$f(w) \approx f(w_0) + \frac{df(w_0)}{dw} (w - w_0)$$
 
@@ -67,7 +67,44 @@ Apply to the network $y(w)$
 
 $$y(w) \approx y(w_0) + \nabla_{w} y(w_0)^{\top} \ (w - w_0)$$
 
-However, the most difficult thing is **how can we guarantee the bound is correct?** It is so complex that I wouldn't put it in this article but I will provide an intuitive explaination of **what does NTK mean?** in the following article. Please keep reading it if you are interested in it.
+where $\nabla_{w} y(w_0)$ and $y(w_0)$ are constants. Thus, the Taylor expansion of **$y(w)$ is just a linear model**. Though the expansion around $w_0$ is regardless to the proof of NTK, it is still **a useful tool to analyze the accuracy of the linear approximation with infinite-width network**.
+
+However, the most difficult thing is **how can we guarantee the approximation is accurate enough?** It is so complex that I wouldn't put it in this article but I will provide an intuitive explaination of **what does NTK mean?** in the following article. Please keep reading it if you are interested in it.
+
+## An Simpler Explaination
+Simply, we only consider a 1-dimension network $f(x, w), \ w, x, \bar{y} \in \mathbb{R}$ for a dataset $x \in X, \ \bar{y} \in \bar{Y}$ which are input data points and output data points respectively. 
+
+First of all, let's define the loss function of a neural network
+
+$$L_{1}(x, w) = \frac{1}{2} \Vert f(x, w) - \bar{y} \Vert^2_2$$
+
+The gradient descent is
+
+$$w_{t+1} = w_0 + \eta \ \frac{dL_1(x, w)}{dw} = w_0 + \eta (f(x, w) - \bar{y}) \frac{df(x, w)}{dw}$$
+
+where $\eta$ is the learning rate.
+
+**NTK represent the changes of the weights before and after the gradient descent update**. Thus, the NTK of 1-dimension network can be defined as
+
+$$k_{1}^{NTK}(x, x') = lim_{\eta \to 0} f(x, w + \eta \ \frac{dL_1(x', w)}{dw}) - f(x, w)$$
+
+$$= lim_{\eta \to 0} f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)$$
+
+To simplify the notation, let $\eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) = \Delta w$
+
+Suppose the learning rate $\eta$ is small enough and thus, $w \approx w + \Delta w$. We can expand around $w + \Delta w$ with Taylor expansion
+
+$$f(x, w) \approx f(x, w + \Delta w) + \frac{df(x', w + \Delta w)}{dw} (w - (w + \Delta w))$$
+
+$$ = f(x, w + \Delta w) - \frac{df(x', w + \Delta w)}{dw}\Delta w$$
+
+We can get NTK
+
+$$k_{1}^{NTK}(x, x') = lim_{\eta \to 0} \frac{f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)}{\eta}$$
+
+$$ = lim_{\eta \to 0} \frac{f(x, w + \Delta w) - f(x, w)}{\eta} = lim_{\eta \to 0} \frac{f(x, w + \Delta w) - (f(x, w + \Delta w) - \frac{df(x', w + \Delta w)}{dw} \Delta w)}{\eta}$$
+
+$$= lim_{\eta \to 0} \ \frac{1}{\eta} \frac{df(x', w + \Delta w)}{dw} = lim_{\eta \to 0} \ \frac{1}{\eta} \frac{df(x', w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}))}{dw}$$
 
 ## Flow And Velocity Field
 Before diving into NTK more deeply, we need to understand what is **Flow** and **Velocity Field**.
@@ -128,7 +165,6 @@ Again, $\Sigma_{NTK}(w_0, w_0)$ is the Neural Tangent Kernel, NTK.
 It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article. 
 
 To summary, **the weights of an infinite width network almost don't change during training. As a result, the kernel always stay almost the same.** We can use NTK to analyze many properties of neural network and the neural networks are no longer black boxes.
-## Another Explaination Without Flow
 
 # Papers
 NNGP
