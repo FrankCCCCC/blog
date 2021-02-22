@@ -17,6 +17,8 @@ cover:
 
 # Neural Tangent Kernel(NTK)
 
+[![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1tLCfu0DCqN3RxLHA9rIARjBtC1VOHFNg?usp=sharing)
+
 # *"In short, NTK represent the changes of the weights before and after the gradient descent update"*
 
 Let's start the journey of revealing the black-box neural networks.
@@ -67,11 +69,13 @@ Apply to the network $y(w)$
 
 $$y(w) \approx y(w_0) + \nabla_{w} y(w_0)^{\top} \ (w - w_0)$$
 
-where $\nabla_{w} y(w_0)$ and $y(w_0)$ are constants. Thus, the Taylor expansion of **$y(w)$ is just a linear model**. Though the expansion around $w_0$ is regardless to the proof of NTK, it is still **a useful tool to analyze the accuracy of the linear approximation with infinite-width network**.
+where $\nabla_{w} y(w_0)$ and $y(w_0)$ are constants. 
+
+Thus, the Taylor expansion of $y(w)$ **is just a linear model**. Though the expansion around $w_0$ is regardless to the proof of NTK, it is still **a useful tool to analyze the accuracy of the linear approximation with infinite-width network**.
 
 However, the most difficult thing is **how can we guarantee the approximation is accurate enough?** It is so complex that I wouldn't put it in this article but I will provide an intuitive explaination of **what does NTK mean?** in the following article. Please keep reading it if you are interested in it.
 
-## An Simpler Explaination
+## An Simpler Explaination Without Flow
 Simply, we only consider a 1-dimension network $f(x, w), \ w, x, \bar{y} \in \mathbb{R}$ for a dataset $x \in X, \ \bar{y} \in \bar{Y}$ which are input data points and output data points respectively. 
 
 First of all, let's define the loss function of a neural network
@@ -84,11 +88,11 @@ $$w_{t+1} = w_0 + \eta \ \frac{dL_1(x, w)}{dw} = w_0 + \eta (f(x, w) - \bar{y}) 
 
 where $\eta$ is the learning rate.
 
-**NTK represent the changes of the weights before and after the gradient descent update**. Thus, the NTK of 1-dimension network can be defined as
+**NTK represent the changes of the weights before and after the gradient descent update**. Thus, the changes of weights can be defined as
 
-$$k_{1}^{NTK}(x, x') = lim_{\eta \to 0} f(x, w + \eta \ \frac{dL_1(x', w)}{dw}) - f(x, w)$$
+$$lim_{\eta \to 0} \frac{f(x, w + \eta \ \frac{dL_1(x', w)}{dw}) - f(x, w)}{\eta}$$
 
-$$= lim_{\eta \to 0} f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)$$
+$$= lim_{\eta \to 0} \frac{f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)}{\eta}$$
 
 To simplify the notation, let $\eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) = \Delta w$
 
@@ -98,22 +102,64 @@ $$f(x, w) \approx f(x, w + \Delta w) + \frac{df(x', w + \Delta w)}{dw} (w - (w +
 
 $$ = f(x, w + \Delta w) - \frac{df(x', w + \Delta w)}{dw}\Delta w$$
 
-We can get NTK
+We can get
 
-$$k_{1}^{NTK}(x, x') = lim_{\eta \to 0} \frac{f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)}{\eta}$$
+$$
+lim_{\eta \to 0} \frac{f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)}{\eta}$$
 
-$$ = lim_{\eta \to 0} \frac{f(x, w + \Delta w) - f(x, w)}{\eta} = lim_{\eta \to 0} \frac{f(x, w + \Delta w) - (f(x, w + \Delta w) - \frac{df(x', w + \Delta w)}{dw} \Delta w)}{\eta}$$
+$$
+= lim_{\eta \to 0} \frac{f(x, w + \Delta w) - f(x, w)}{\eta} 
+= lim_{\eta \to 0} \frac{f(x, w + \Delta w) - (f(x, w + \Delta w) - \frac{df(x', w + \Delta w)}{dw} \Delta w)}{\eta}
+$$
 
-$$= lim_{\eta \to 0} \ \frac{1}{\eta} \frac{df(x', w + \Delta w)}{dw} = lim_{\eta \to 0} \ \frac{1}{\eta} \frac{df(x', w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}))}{dw}$$
+$$
+= lim_{\eta \to 0} \ \frac{1}{\eta} \frac{df(x', w + \Delta w)}{dw} \Delta w 
+= lim_{\eta \to 0} \ \frac{df(x', w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw})}{dw} \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}
+$$
 
-## Flow And Velocity Field
-Before diving into NTK more deeply, we need to understand what is **Flow** and **Velocity Field**.
+$$
+= \frac{df(x', w)}{dw} \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}
+$$
 
-### Velocity Field
+NTK is defined as 
 
-### Flow
+$$k_{1}^{NTK}(x, x') = \frac{df(x',w)}{dw} \frac{df(x', w)}{dw} = \frac{df(x',w_0)}{dw} \frac{df(x', w_0)}{dw}$$
 
-## Gradient Flow
+Since $f(x', w) - \bar{y}$ would be very close to 0 while MSE is close to 0, we can simply ignore it. It is trivial that NTK represent the **changes of weights before and after gradient descent**. It measure the difference of weights quantitatively and thus we can approximate the process of gradient descent with Gaussian process.
+
+## Flow And Vector Field
+So far, we've shown the neural tangent kernel on 1-width network. To move forward to the infinite-width network, we need 2 tools to help us analyzing the **process of gradient descent in high dimensions**. As a result, before diving into NTK more deeply, we need to understand what is **Gradient Flow** and **Vector Field**.
+
+### Vector Field
+Define a space $\chi \in \mathbb{R}^d$ with d dimensions and a point of the space $x \in \mathbb{R}^d$. A hyperplane $f(x) \ f: \chi \to \mathbb{R}$. As we want to find the global minimal point $x^*$
+
+$$x^* = \mathop{\arg\min}_{x \in X} \ f(x)$$
+
+The gradient of the hyperplane $\nabla_x \ f: \chi \to \mathbb{R}^d$ **represent the gradients of each point on the hyperplane $f$**.
+
+Then, we define a vector field $F: \chi \to \mathbb{R}^d$  **assigning the velocity vector to each points of the space**. Mathmatically, **the vector field $F$ has the same function space as the gradient $\nabla_x f$**. As a result, we can also **see the gradient $\nabla_x f$ as a vector field $- \nabla_x f = F(x)$** which assigns the velocity vector $v \in \mathbb{R}$ to each point $x \in \chi$.
+
+$$F(x) = - \nabla_x f(x) = v$$
+
+A hyperplane and the gradients can be illustrated as the following figure. **The orange surface represents the hyperplane $f$ and the corresponding gradient $\nabla_x f$ of each points $x \in \chi$ on the hyperplane $f$ is the blue arrows in the bottom**. Note that the gradients $\nabla_x f(x)$ here are ascent while gradients of our optimization problem are descent $- \nabla_x f(x)$. They have oppsite direction. Intuitively, the gradients represent **the direction and steepness of the points on the hyperplane** while **the vector field is the velocity vector of the points**. Mathmatically, the gradients and the vector field have the **same function space**, so we let them be equal but not due to the physical perspective.
+
+![](/img/nngp_ntk/3d-gradient-cos.svg)
+
+Then we introduce another variable **time**. Let $c(t)$ for $c: \mathbb{R} \to \mathbb{R}^d$ represent the dynamics of along the time $t$. The function $c(t)$ gives the position in the space $\chi \in \mathbb{R}^d$ along time $t$.
+
+As a result, we know
+
+$$c(t + \delta) = c(t) + \delta F(c(t)) = c(t) - \delta \nabla_x f(c(t))$$
+
+where $\delta$ represent the **time-step** of 2 positions. $\delta F(c(t)) = - \delta \nabla_x f(c(t))$ means time products velocity vector and then get the movment vector during the time $\delta$.
+
+### Gradient Flow
+The gradient flow is defined as
+
+$$\dot{X}(t) = F(c(t)) = - \nabla_x f(c(t)) = - \nabla_x f(c(t))\dot{c}(t) = - \nabla_x f(c(t)) \frac{dc(t)}{dt}$$
+
+The gradient flow describe **changing gradients along time**.
+## Combined With Gradient Flow
 We've know the update of the gradient descent is
 
 $$w_{t+1} = w_t - \eta \nabla_{w} L(w_t)$$
@@ -122,7 +168,7 @@ Let the function $w(t) = w_t$ and define the gradient flow over weights is $\dot
 
 $$\dot{w}(t) = - \nabla_{w} L(w(t))$$
 
-Actually, the meaning of the gradient flow $\dot{w}(t)$ is likey **the changing direction of gradient descent**.
+Actually, the meaning of the gradient flow $\dot{w}(t) = \frac{dw(t)}{dt}$ is likey **the changing direction of gradient descent along time**.
 
 We expand the gradient of the loss function with chain rule
 
@@ -131,7 +177,7 @@ $$
 $$
 
 $$
-= - \frac{1}{2} \cdot 2 \nabla_{w} y(w(t)) (y(w(t)) - \bar{y}) = - \nabla_{w} y(w) (y(w(t)) - \bar{y})
+= - \frac{1}{2} \cdot 2 \nabla_{w} y(w(t)) (y(w(t)) - \bar{y}) = - \nabla_{w} y(w(t)) (y(w(t)) - \bar{y})
 $$
 
 Now we can derive the flow of the network $\dot{y}(w(t))$
@@ -141,12 +187,16 @@ $$
 $$
 
 $$
-= -\nabla_{w} y(w(t))^{\top} \nabla_{w} y(w) (y(w(t)) - \bar{y}) = - \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)(y(w_t) - \bar{y})
+= -\nabla_{w} y(w(t))^{\top} \nabla_{w} y(w) (y(w(t)) - \bar{y}) = - \nabla_{w} y(w(t))^{\top} \nabla_{w} y(w(t))(y(w(t)) - \bar{y})
 $$
+
+To simplify the notation, we replace the dynamics $w(t)$ with $w_t$. 
+
+$$w(t) = w_t$$
 
 Actually, we are now very close to the neural tangent kernel(NTK). The NTK is a kernel matrix defined as
 
-## $$\Sigma_{NTK}(w_t, w_t) = \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)$$
+## $$\Sigma_{NTK}(w) = \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)$$
 
 Since the weights of the infinite-width network doesn't change during the training. 
 
@@ -158,13 +208,13 @@ $$
 -\nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t) \approx -\nabla_{w} y(w_0)^{\top} \nabla_{w} y(w_0)
 $$
 
-## $$= \Sigma_{NTK}(w_0, w_0)$$
+## $$= \Sigma_{NTK}(w)$$
 
-Again, $\Sigma_{NTK}(w_0, w_0)$ is the Neural Tangent Kernel, NTK.
+Again, $\Sigma_{NTK}(w_0)$ is the Neural Tangent Kernel, NTK.
 
 It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article. 
 
-To summary, **the weights of an infinite width network almost don't change during training. As a result, the kernel always stay almost the same.** We can use NTK to analyze many properties of neural network and the neural networks are no longer black boxes.
+To summary, **the weights of an infinite-width network almost don't change during training. As a result, the kernel always stay almost the same.** We can use NTK to analyze many properties of neural network and the neural networks are no longer black boxes.
 
 # Papers
 NNGP
@@ -174,6 +224,8 @@ NTK
 - [Wide Neural Networks of Any Depth Evolve as Linear Models Under Gradient Descent](https://arxiv.org/abs/1902.06720)
 
 # Reference
+Thank for the following posts / people sincerely.
+
 Gaussian Distribution
 - [StackExchange - Product of two multivariate normal distribution](https://math.stackexchange.com/questions/3495719/product-of-two-multivariate-normal-distribution)
 
@@ -193,6 +245,4 @@ Flow
 
 - [Max Planck Science - Gradient Flow I](https://www.youtube.com/watch?v=pesXn-qwMvQ)
 - [StackExchange - gradient flow and what is, for example, L2 gradient?](https://math.stackexchange.com/questions/156236/gradient-flow-and-what-is-for-example-l2-gradient)
-
-Notebook
-- [Colab Notebook](https://colab.research.google.com/drive/1tLCfu0DCqN3RxLHA9rIARjBtC1VOHFNg?usp=sharing)
+- 
