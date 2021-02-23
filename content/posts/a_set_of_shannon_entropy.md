@@ -1,7 +1,7 @@
 ---
 title: "A Set of Shannon Entropy"
 date: 2021-02-23T01:03:19+08:00
-draft: true
+draft: false
 
 categories: ["information theory"]
 series: []
@@ -12,3 +12,79 @@ cover:
     relative: false
 ---
 
+# Shannon Entropy
+For discrete random variable $X$ with events $\\{ x_1, ..., x_n \\}$ and probability mass function $P(X)$, we defien the Shannon Entropy $H(X)$ as 
+
+$$H(X) = \mathbb{E}[-log_b \ P(X)] = - \Sigma_{i = 1}^{i = n} \ P(x_i) log_b \ P(x_i)$$
+
+where $b$ is the base of the logarithm. The unit of Shannon entropy is **bit** for $b = 2$ while **nat** for $b = e$
+
+## The Perspective of Venn Diagram
+We can illustrate the relation between joint entropy, conditional entropy, and mutual entropy as the following figure
+
+![](/img/a_set_of_shannon_entropy/mutual_entropy_venn.png)
+
+where $H(X), \ H(Y)$ are Shannon entropy of RV $X, \ Y$ respectively. $H(X, Y)$ is the joint entopy. $I(X; Y)$ is the mutual entropy. $H(X|Y), \ H(Y|X)$ are conditional entropy that given $Y$ and $X$ respectively.
+
+## Joint Entropy
+
+The joint distribution is $P(X,Y)$ for two discrete random variables $X$ and $Y$. Thus the joint entropy is defined as
+
+$$H(X, Y) = \mathbb{E}[-log \ P(X, Y)] = - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)$$
+
+## Conditional Entropy
+
+The conditional entropy of $Y$ given $X$ is defined as
+
+$$H(Y | X) = H(X, Y) - H(Y)$$
+
+$$= - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j) - (- \Sigma_{j = 1}^{j = n} \ P(y_j) log \ P(y_j))$$
+
+$$= \Sigma_{j = 1}^{j = n} \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) log \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)$$
+
+$$
+= \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) (log \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) - log \ P(x_i, y_j))
+$$
+
+$$
+= \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) (- log \ \frac{P(x_i, y_j)}{P(y_j)})
+$$
+
+$$
+= - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ \frac{P(x_i, y_j)}{P(y_j)}
+$$
+
+## Mutual Information(MI)
+In general, MI is the intersection or say the common information for both random variables $X$ and $Y$.
+
+Let $(X,Y)$ be a pair of random variables with values over the space $X \times Y$. If their joint distribution is $P(X,Y)$ and the marginal distributions are $P_X(X)$ and $P_Y(Y)$, the mutual information is defined as
+
+$$I(X; Y) = H(X) + H(Y) - H(X, Y)$$
+
+$$
+= - \Sigma_{i = 1}^{i = n} \ P_X(x_i) log \ P_X(x_i) - \Sigma_{j = 1}^{j = n} \ P_Y(y_j) log \ P_Y(y_j) + \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)
+$$
+
+$$
+= - \Sigma_{i = 1}^{i = n} \ (\Sigma_{j = 1}^{j = n} P(x_i, y_j)) \ log (\Sigma_{j = 1}^{j = n} P(x_i, y_j)) - \Sigma_{j = 1}^{j = n} \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) \ log (\Sigma_{i = 1}^{i = n} P(x_i, y_j))
+$$
+
+$$
++\Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)
+$$
+
+$$
+= \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ \frac{P(x_i, y_j)}{P_X(X) \ P_Y(Y)}
+$$
+
+In the view of **set**, MI can also be defined as 
+
+$$I(X; Y) = H(X) + H(Y) - H(X, Y)$$
+
+$$
+= H(X) - H(X | Y) = H(Y) - H(Y | X)
+$$
+
+$$
+= H(X, Y) - H(X | Y) - H(Y | X)
+$$
