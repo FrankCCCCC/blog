@@ -71,7 +71,7 @@ $$y(w) \approx y(w_0) + \nabla_{w} y(w_0)^{\top} \ (w - w_0)$$
 
 where $\nabla_{w} y(w_0)$ and $y(w_0)$ are constants. 
 
-Thus, the Taylor expansion of $y(w)$ **is just a linear model**. Though the expansion around $w_0$ is regardless to the proof of NTK, it is still **a useful tool to analyze the accuracy of the linear approximation with infinite-width network**.
+Thus, the Taylor expansion of $y(w)$ **is just a linear model**. Though the expansion around $w_0$ is regardless to the proof of NTK, it is still **a useful tool to analyze the accuracy of the linear approximation with infinite-wide network**.
 
 However, the most difficult thing is **how can we guarantee the approximation is accurate enough?** It is so complex that I wouldn't put it in this article but I will provide an intuitive explaination of **what does NTK mean?** in the following article. Please keep reading it if you are interested in it.
 
@@ -128,7 +128,7 @@ $$k_{1}^{NTK}(x, x') = \frac{df(x',w)}{dw} \frac{df(x', w)}{dw} = \frac{df(x',w_
 Since $f(x', w) - \bar{y}$ would be very close to 0 while MSE is close to 0, we can simply ignore it. It is trivial that NTK represent the **changes of weights before and after gradient descent**. It measure the difference of weights quantitatively and thus we can approximate the process of gradient descent with Gaussian process.
 
 ## Flow And Vector Field
-So far, we've shown the neural tangent kernel on 1-width network. To move forward to the infinite-width network, we need 2 tools to help us analyzing the **process of gradient descent in high dimensions**. As a result, before diving into NTK more deeply, we need to understand what is **Gradient Flow** and **Vector Field**.
+So far, we've shown the neural tangent kernel on 1-width network. To move forward to the infinite-wide network, we need 2 tools to help us analyzing the **process of gradient descent in high-dimensionalal**. As a result, before diving into NTK more deeply, we need to understand what is **Gradient Flow** and **Vector Field**.
 
 ### Vector Field
 Define a space $\chi \in \mathbb{R}^d$ with d dimensions and a point of the space $x \in \mathbb{R}^d$. A hyperplane $f(x) \ f: \chi \to \mathbb{R}$. As we want to find the global minimal point $x^*$
@@ -194,7 +194,11 @@ To simplify the notation, we replace the dynamics $w(t)$ with $w_t$.
 
 $$w(t) = w_t$$
 
-However, we've known the mathmatical form of the flow $\dot{y}(w_t)$, but **what's the meaning of the flow $\dot{y}(w_t)$?** Well, we can see the updated weights $w_t$ during the gradient descent as a **trajectory in a high-dimension space**. Since the learning rate $\eta$ is quite small, the the difference of weights $w_t$ between before and after the gradient descent is very small. As a result, we can see the discrete porgress of the graient descent as a continuous trjectory like the following figure.
+Thus, we get 
+
+$$\dot{y}(w_t) = - \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)(y(w_t) - \bar{y})$$
+
+However, we've known the mathmatical form of the flow $\dot{y}(w_t)$, but **what's the meaning of the flow $\dot{y}(w_t)$?** Well, we can see the updated weights $w_t$ during the gradient descent as a **trajectory in a high-dimensional space**. Since the learning rate $\eta$ is quite small, the the difference of weights $w_t$ between before and after the gradient descent is very small. As a result, we can see the discrete porgress of the graient descent as a continuous trjectory like the following figure. The flow over the neural network $\dot{y}(w_t)$ is **actually the tangent line of $w_t$**. The flow $\dot{y}(w_t)$ describe the velocity vector of the point $w_t$ and can predicts close-enough next point $w_{t+1}$.
 
 ![](/img/nngp_ntk/flow_trajectory.png)
 
@@ -202,7 +206,7 @@ Actually, we are now very close to the neural tangent kernel(NTK). The NTK is a 
 
 ## $$\Sigma_{NTK}(w) = \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)$$
 
-Since the weights of the infinite-width network doesn't change during the training. 
+Since the weights of the infinite-wide network doesn't change during the training. 
 
 $$y(w_t) \approx y(w_0)$$
 
@@ -218,7 +222,7 @@ Again, $\Sigma_{NTK}(w_0)$ is the Neural Tangent Kernel, NTK.
 
 It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article. 
 
-To summary, **the weights of an infinite-width network almost don't change during training. As a result, the kernel always stay almost the same.** We can use NTK to analyze many properties of neural network and the neural networks are no longer black boxes.
+To summary, **the weights of an infinite-wide network almost don't change during training. As a result, the kernel always stay almost the same.** We can use NTK to analyze many properties of neural network and the neural networks are no longer black boxes.
 
 # Papers
 NNGP
