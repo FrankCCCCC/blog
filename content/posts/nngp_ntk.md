@@ -194,6 +194,10 @@ To simplify the notation, we replace the dynamics $w(t)$ with $w_t$.
 
 $$w(t) = w_t$$
 
+However, we've known the mathmatical form of the flow $\dot{y}(w_t)$, but **what's the meaning of the flow $\dot{y}(w_t)$?** Well, we can see the updated weights $w_t$ during the gradient descent as a **trajectory in a high-dimension space**. Since the learning rate $\eta$ is quite small, the the difference of weights $w_t$ between before and after the gradient descent is very small. As a result, we can see the discrete porgress of the graient descent as a continuous trjectory like the following figure.
+
+![](/img/nngp_ntk/flow_trajectory.png)
+
 Actually, we are now very close to the neural tangent kernel(NTK). The NTK is a kernel matrix defined as
 
 ## $$\Sigma_{NTK}(w) = \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)$$
