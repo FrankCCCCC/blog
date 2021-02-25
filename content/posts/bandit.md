@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to Multi-Armed Bandit Problem and Solutions"
+title: "An Introduction to Multi-Armed Bandit Problem"
 date: 2021-02-16T20:11:41+08:00
 draft: true
 

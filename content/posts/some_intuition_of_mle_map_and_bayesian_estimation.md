@@ -1,5 +1,5 @@
 ---
-title: "An Insight Into MLE, MAP, and Bayesian Estimation"
+title: "Some Intuition Of MLE, MAP, and Bayesian Estimation"
 date: 2021-02-19T11:15:15+08:00
 draft: true
 
