@@ -27,7 +27,7 @@ Let $X_1,…,X_t$ be i.i.d. (independent and identically distributed) random var
 Then for $u > 0$, we have:
 
 
-$$ \mathbb{P} [ \mathbb{E}[X] > \overline{X}_t + u] \leq e^{-2tu^2} $$
+$$ P( E[X] > \overline{X}_t + u) \leq e^{-2tu^2} $$
 
 <!-- ![](/img/gp/hoeffding_ineq.png) -->
 
@@ -35,7 +35,7 @@ The inequation gives an upper bound in probability. Once the probability is smal
 
 Combine the Hoeffding’s Inequality and our goal. We can dervie 
 
-$$ \mathbb{P} [ Q(a) > \hat{Q}_t(a) + U_t(a)] \leq e^{-2t{U_t(a)}^2} $$
+$$ P( Q(a) > \hat{Q}_t(a) + U_t(a)) \leq e^{-2t{U_t(a)}^2} $$
 
 <!-- ![](/img/gp/ucb_hoeffding.png) -->
 

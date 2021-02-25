@@ -109,13 +109,13 @@ Some common kernels are:
 
   We define the following functions as neural networks with fully-conntected layers:
 
-  $$z_{i}^{1}(x) = b_i^{1} + \Sigma_{j=1}^{N_1} \ W_{ij}^{1}x_j^1(x), \ \ x_{j}^{1}(x) = \phi(b_i^{0} + \Sigma_{k=1}^{d_{in}} \ W_{ik}^{0}x_k(x))$$
+  $$z_{i}^{1}(x) = b_i^{1} + \sum_{j=1}^{N_1} \ W_{ij}^{1}x_j^1(x), \ \ x_{j}^{1}(x) = \phi(b_i^{0} + \sum_{k=1}^{d_{in}} \ W_{ik}^{0}x_k(x))$$
 
   where $b_i^{1}$ is the $i$th-bias of the second layer(the same as first hidden layer), $W_{ij}^{1}$ is the $i$th-weights of the first layer(the same as input layer) , function $\phi$ is the activation function, and $x$ is the input data of the neural network. As a result,  
 
   Thus, the kernel of $l$-th layer is
 
-  $$K_{NN}^l(x, x') = \sigma_b^2 + \sigma_w^2 \mathbb{E}_{z_i^{l-1} \sim GP(0, K^{l-1})}[\phi(z_i^{l-1}(x)) \phi(z_i^{l-1}(x'))]$$
+  $$K_{NN}^l(x, x') = \sigma_b^2 + \sigma_w^2 E_{z_i^{l-1} \sim GP(0, K^{l-1})}[\phi(z_i^{l-1}(x)) \phi(z_i^{l-1}(x'))]$$
 
   For more detail, please refer to [this slide](https://www.brown.edu/research/projects/crunch/sites/brown.edu.research.projects.crunch/files/uploads/Pang-NNGP-Crunch-Seminar.pdf) and the paper [Deep Neural Networks as Gaussian Processes](https://arxiv.org/abs/1711.00165).
 
@@ -220,7 +220,7 @@ $$u(x) = \begin{cases}
 Then, integrate the probability of $f(x) \leq f'$
 
 $$
-a_{PI}(x|D) = \mathbb{E}[u(x) | x, D] = \int_{-\infty}^{f'} \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
+a_{PI}(x|D) = E[u(x) | x, D] = \int_{-\infty}^{f'} \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
 =\phi(f'; \mu(x), \kappa(x, x))
 $$
 
@@ -238,7 +238,7 @@ $$u(x) = \mathop{\max} (0, f' − f(x))$$
 The ultility function can be regarded as the advanrage $f' - f(x)$ versus the current optimal $f'$. Then, we can derive the expectation via integration
 
 $$
-a_{EI}(x|D) = \mathbb{E}[u(x) | x, D] = \int_{-\infty}^{f'} (f' - f) \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
+a_{EI}(x|D) = E[u(x) | x, D] = \int_{-\infty}^{f'} (f' - f) \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
 $$
 
 $$
@@ -286,7 +286,7 @@ $$u(x) = H[x^{\ast} | D] - H[x^{\ast} | D, x, f(x)]$$
 
 where $H$ represent the Shannon entropy of the corresponding data point. The $u(x)$ means **how much uncertinty of $p(x^{\ast} | D)$ does the evaluation reduce after the data point $x$ is evaluated**. In most of the time, the entropy(uncertainty) of $p(x^{\ast} | D)$ should decrease after we evaluate more data points, so $u(x)$ should be positive in general. Thus, the acquisition function should be
 
-$$a_{ES}(x|D) = \mathbb{E}[u(x) | x, D]$$
+$$a_{ES}(x|D) = E[u(x) | x, D]$$
 
 However, we know $u(x)$ cannot be computed directly since it doesn't have close form. There are a series of approximations trying to do it but I will ignore thme in this blog. Finally, we can choose the next evaluation point $x_t$ as following
 

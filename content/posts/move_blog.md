@@ -135,13 +135,13 @@ code.has-jax {
 以上，完工。給個範例
 
 ```
-$$a_{PI}(x|D) = \mathbb{E}[u(x) | x, D] = \int_{-\infty}^{f'} \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
+$$a_{PI}(x|D) = E[u(x) | x, D] = \int_{-\infty}^{f'} \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
 =\phi(f'; \mu(x), \kappa(x, x))$$
 ```
 
 顯示很完美
 
-$$a_{PI}(x|D) = \mathbb{E}[u(x) | x, D] = \int_{-\infty}^{f'} \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
+$$a_{PI}(x|D) = E[u(x) | x, D] = \int_{-\infty}^{f'} \mathcal{N}(f; \mu(x), \kappa(x, x)) \ df
 =\phi(f'; \mu(x), \kappa(x, x))$$
 
 只不過會Mathjax在parse底線的時，有時候會有一點問題，如

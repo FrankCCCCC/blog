@@ -41,4 +41,4 @@ In probability theory, for a random variable $X$ and a convex function $\varphi$
 
 <!-- ![](/img/a_guide_of_variational_lower_bound/jensen_prob.svg) -->
 
-$$\varphi \ (\mathbb{E}[X]) \leq \mathbb{E}[\varphi(X)]$$
+$$\varphi \ (E[X]) \leq E[\varphi(X)]$$
