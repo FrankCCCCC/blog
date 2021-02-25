@@ -15,7 +15,7 @@ cover:
 # Shannon Entropy
 For discrete random variable $X$ with events $\\{ x_1, ..., x_n \\}$ and probability mass function $P(X)$, we defien the Shannon Entropy $H(X)$ as 
 
-$$H(X) = \mathbb{E}[-log_b \ P(X)] = - \Sigma_{i = 1}^{i = n} \ P(x_i) log_b \ P(x_i)$$
+$$H(X) = E[-log_b \ P(X)] = - \sum_{i = 1}^{i = n} \ P(x_i) log_b \ P(x_i)$$
 
 where $b$ is the base of the logarithm. The unit of Shannon entropy is **bit** for $b = 2$ while **nat** for $b = e$
 
@@ -30,7 +30,9 @@ where $H(X), \ H(Y)$ are Shannon entropy of RV $X, \ Y$ respectively. $H(X, Y)$ 
 
 The joint distribution is $P(X,Y)$ for two discrete random variables $X$ and $Y$. Thus the joint entropy is defined as
 
-$$H(X, Y) = \mathbb{E}[-log \ P(X, Y)] = - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)$$
+
+
+$$H(X, Y) = E[-log \ P(X, Y)] = - \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)$$
 
 ## Conditional Entropy
 
@@ -38,20 +40,20 @@ The conditional entropy of $Y$ given $X$ is defined as
 
 $$H(Y | X) = H(X, Y) - H(Y)$$
 
-$$= - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j) - (- \Sigma_{j = 1}^{j = n} \ P(y_j) log \ P(y_j))$$
+$$= - \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j) - (- \sum_{j = 1}^{j = n} \ P(y_j) log \ P(y_j))$$
 
-$$= \Sigma_{j = 1}^{j = n} \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) log \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)$$
-
-$$
-= \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) (log \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) - log \ P(x_i, y_j))
-$$
+$$= \sum_{j = 1}^{j = n} \ (\sum_{i = 1}^{i = n} P(x_i, y_j)) log \ (\sum_{i = 1}^{i = n} P(x_i, y_j)) - \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)$$
 
 $$
-= \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) (- log \ \frac{P(x_i, y_j)}{P(y_j)})
+= \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) (log \ (\sum_{i = 1}^{i = n} P(x_i, y_j)) - log \ P(x_i, y_j))
 $$
 
 $$
-= - \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ \frac{P(x_i, y_j)}{P(y_j)}
+= \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) (- log \ \frac{P(x_i, y_j)}{P(y_j)})
+$$
+
+$$
+= - \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) log \ \frac{P(x_i, y_j)}{P(y_j)}
 $$
 
 ## Mutual Information(MI)
@@ -62,19 +64,19 @@ Let $(X,Y)$ be a pair of random variables with values over the space $X \times Y
 $$I(X; Y) = H(X) + H(Y) - H(X, Y)$$
 
 $$
-= - \Sigma_{i = 1}^{i = n} \ P_X(x_i) log \ P_X(x_i) - \Sigma_{j = 1}^{j = n} \ P_Y(y_j) log \ P_Y(y_j) + \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)
+= - \sum_{i = 1}^{i = n} \ P_X(x_i) log \ P_X(x_i) - \sum_{j = 1}^{j = n} \ P_Y(y_j) log \ P_Y(y_j) + \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)
 $$
 
 $$
-= - \Sigma_{i = 1}^{i = n} \ (\Sigma_{j = 1}^{j = n} P(x_i, y_j)) \ log (\Sigma_{j = 1}^{j = n} P(x_i, y_j)) - \Sigma_{j = 1}^{j = n} \ (\Sigma_{i = 1}^{i = n} P(x_i, y_j)) \ log (\Sigma_{i = 1}^{i = n} P(x_i, y_j))
+= - \sum_{i = 1}^{i = n} \ (\sum_{j = 1}^{j = n} P(x_i, y_j)) \ log (\sum_{j = 1}^{j = n} P(x_i, y_j)) - \sum_{j = 1}^{j = n} \ (\sum_{i = 1}^{i = n} P(x_i, y_j)) \ log (\sum_{i = 1}^{i = n} P(x_i, y_j))
 $$
 
 $$
-+\Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)
++\sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) log \ P(x_i, y_j)
 $$
 
 $$
-= \Sigma_{i = 1}^{i = n} \Sigma_{j = 1}^{j = n} \ P(x_i, y_j) log \ \frac{P(x_i, y_j)}{P_X(X) \ P_Y(Y)}
+= \sum_{i = 1}^{i = n} \sum_{j = 1}^{j = n} \ P(x_i, y_j) log \ \frac{P(x_i, y_j)}{P_X(X) \ P_Y(Y)}
 $$
 
 In the view of **set**, MI can also be defined as 

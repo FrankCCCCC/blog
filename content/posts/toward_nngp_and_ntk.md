@@ -18,13 +18,13 @@ Model the neural network as GP, aka neural network Gaussian Process(NNGP). Intui
 
 We define the following functions as neural networks with fully-conntected layers:
 
-$$z_{i}^{1}(x) = b_i^{1} + \Sigma_{j=1}^{N_1} \ W_{ij}^{1}x_j^1(x), \ \ x_{j}^{1}(x) = \phi(b_i^{0} + \Sigma_{k=1}^{d_{in}} \ W_{ik}^{0}x_k(x))$$
+$$z_{i}^{1}(x) = b_i^{1} + \sum_{j=1}^{N_1} \ W_{ij}^{1}x_j^1(x), \ \ x_{j}^{1}(x) = \phi(b_i^{0} + \sum_{k=1}^{d_{in}} \ W_{ik}^{0}x_k(x))$$
 
 where $b_i^{1}$ is the $i$th-bias of the second layer(the same as first hidden layer), $W_{ij}^{1}$ is the $i$th-weights of the first layer(the same as input layer) , function $\phi$ is the activation function, and $x$ is the input data of the neural network. As a result,  
 
 Thus, the kernel of $l$-th layer is
 
-$$K_{NN}^l(x, x') = \sigma_b^2 + \sigma_w^2 \mathbb{E}_{z_i^{l-1} \sim GP(0, K^{l-1})}[\phi(z_i^{l-1}(x)) \phi(z_i^{l-1}(x'))]$$
+$$K_{NN}^l(x, x') = \sigma_b^2 + \sigma_w^2 E_{z_i^{l-1} \sim GP(0, K^{l-1})}[\phi(z_i^{l-1}(x)) \phi(z_i^{l-1}(x'))]$$
 
 # Neural Tangent Kernel(NTK)
 
@@ -66,7 +66,7 @@ As we can see, **the difference of the weights during training decrease as the w
 ## Apply Taylor Expansion
 We've known the Taylor expansion is 
 
-$$f(x) = \Sigma_{n=0}^{\infty} \ \frac{f^{n}(a)}{n!} (x - a)^{n}$$
+$$f(x) = \sum_{n=0}^{\infty} \ \frac{f^{n}(a)}{n!} (x - a)^{n}$$
 
 A function $f(w)$ expanded on the $w_0$ with first order approximation is 
 
@@ -215,7 +215,7 @@ However, we've known the mathmatical form of the flow $\dot{y}(w_t)$, but **what
 
 Actually, we are now very close to the neural tangent kernel(NTK). The NTK is a kernel matrix defined as
 
-## $$\Sigma_{NTK}(w) = \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)$$
+## $$\boldsymbol{\Sigma_{NTK}}(w) = \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)$$
 
 Since the weights of the infinite-wide network doesn't change during the training. 
 
@@ -227,9 +227,9 @@ $$
 -\nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t) \approx -\nabla_{w} y(w_0)^{\top} \nabla_{w} y(w_0)
 $$
 
-## $$= \Sigma_{NTK}(w)$$
+## $$= \boldsymbol{\Sigma_{NTK}}(w)$$
 
-Again, $\Sigma_{NTK}(w_0)$ is the Neural Tangent Kernel, NTK.
+Again, $\boldsymbol{\Sigma_{NTK}}(w_0)$ is the Neural Tangent Kernel, NTK.
 
 It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article. 
 
