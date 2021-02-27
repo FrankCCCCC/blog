@@ -38,6 +38,8 @@ $$L(\theta) = \sum_{i = 1}^{b}[(y_i^{tot} - Q_{tot}(\tau, u, s; \theta))^2]$$
 
 where $b$ is the batch size of transitions sampled from the replay buffer, and $y_{tot} = r + \gamma \ max_{u'} \ Q_{tot}(τ', u', s'; θ^−)$, and $θ^-$ are the parameters of a target network asin DQN
 
+## Weighted QMIX
+
 # Papers
 
 IQL
@@ -52,7 +54,9 @@ QMIX
 
 [QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning](https://arxiv.org/abs/1803.11485)
 
+Weighted QMIX
 
+[Weighted QMIX: Expanding Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning](https://arxiv.org/abs/2006.10800)
 
 # Reference
 - [多智能体强化学习算法 QMIX：Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning](http://mayi1996.top/2020/08/07/QMIX-Monotonic-Value-Function-Factorisation-for-Deep-Multi-Agent-Reinforcement-Learning/)
