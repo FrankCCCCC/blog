@@ -40,7 +40,7 @@ First of all, we need to define a simple neural network with 2 hidden layers
 
 $$ y(x, w)$$
 
-where $y$ is the neural network with weights $w \in \mathbb{R}^m$ and, $\\{ x, \bar{y} \\}$ is the dataset which is a set of the input data and the output data with $N$ data points. Since we focus on analyze the weight $w$, we simplify the notation $y(x, w)$ as $y(w)$
+where $y$ is the neural network with weights $w \in \mathbb{R}^m$ and, $\{ x, \bar{y} \}_N$ is the dataset which is a set of the input data and the output data with $N$ data points. Since we focus on analyze the weight $w$, we simplify the notation $y(x, w)$ as $y(w)$
 
 Suppose we have a regression task on the network $y(w)$, define
 
@@ -95,7 +95,12 @@ $$L_{1}(x, w) = \frac{1}{2} \Vert f(x, w) - \bar{y} \Vert^2_2$$
 
 The gradient descent is
 
-$$w_{t+1} = w_0 + \eta \ \frac{dL_1(x, w)}{dw} = w_0 + \eta (f(x, w) - \bar{y}) \frac{df(x, w)}{dw}$$
+$$
+w_{t+1} = w_0 + \eta \ \frac{dL_1(x, w)}{dw} 
+$$
+$$
+= w_0 + \eta (f(x, w) - \bar{y}) \frac{df(x, w)}{dw}
+$$
 
 where $\eta$ is the learning rate.
 
@@ -197,11 +202,19 @@ Actually, the meaning of the gradient flow $\dot{w}(t) = \frac{dw(t)}{dt}$ is li
 We expand the gradient of the loss function with chain rule
 
 $$
-\dot{w}(t) = - \nabla_{w} L(w(t)) = - \nabla_{w} \frac{1}{2} \Vert y(w(t)) - \bar{y} \Vert^2_2
+\dot{w}(t) = - \nabla_{w} L(w(t)) 
 $$
 
 $$
-= - \frac{1}{2} \cdot 2 \nabla_{w} y(w(t)) (y(w(t)) - \bar{y}) = - \nabla_{w} y(w(t)) (y(w(t)) - \bar{y})
+= - \nabla_{w} \frac{1}{2} \Vert y(w(t)) - \bar{y} \Vert^2_2
+$$
+
+$$
+= - \frac{1}{2} \cdot 2 \nabla_{w} y(w(t)) (y(w(t)) - \bar{y}) 
+$$
+
+$$
+= - \nabla_{w} y(w(t)) (y(w(t)) - \bar{y})
 $$
 
 Now we can derive the flow of the network $\dot{y}(w(t))$
@@ -211,7 +224,11 @@ $$
 $$
 
 $$
-= -\nabla_{w} y(w(t))^{\top} \nabla_{w} y(w) (y(w(t)) - \bar{y}) = - \nabla_{w} y(w(t))^{\top} \nabla_{w} y(w(t))(y(w(t)) - \bar{y})
+= -\nabla_{w} y(w(t))^{\top} \nabla_{w} y(w) (y(w(t)) - \bar{y}) 
+$$
+
+$$
+= - \nabla_{w} y(w(t))^{\top} \nabla_{w} y(w(t))(y(w(t)) - \bar{y})
 $$
 
 To simplify the notation, we replace the dynamics $w(t)$ with $w_t$. 
@@ -250,9 +267,9 @@ $$ -->
 
 Again, $\boldsymbol{\Sigma_{NTK}}(w_0)$ is the Neural Tangent Kernel, NTK.
 
-The way here to measure the distance of 2  
+The way here to measure the distance between 2 vectors $\nabla_{w} y(x, w_0)$ and $\nabla_{w} y(x', w_0)$ is the **Cosine Similarity** with inner product. The cosine value of 2 identical vector is 1 and 2 orthorgonal vectors is 0 which are totally different.
 
-It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article. 
+<!-- It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article.  -->
 
 To summary, **the weights of an infinite-wide network almost don't change during training. As a result, the kernel always stay almost the same.** We can use NTK to analyze many properties of neural network and the neural networks are no longer black boxes.
 
