@@ -243,9 +243,11 @@ However, we've known the mathmatical form of the flow $\dot{y}(w_t)$, but **what
 
 ![](/img/nngp_ntk/flow_trajectory.png)
 
+Since $y(w_t) - \bar{y}$ would be very close to 0, too while MSE is close to 0, we can simply ignore it.
+
 Actually, we are now very close to the neural tangent kernel(NTK). The NTK is a kernel matrix defined as
 
-## $$\boldsymbol{\Sigma_{NTK}}(w) = \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)$$
+## $$\boldsymbol{K_{NTK}(x, x')} = \nabla_{w} y(x, w_t)^{\top} \nabla_{w} y(x', w_t)$$
 
 Since the weights of the infinite-wide network doesn't change during the training. 
 
@@ -254,7 +256,7 @@ $$y(w_t) \approx y(w_0)$$
 We get
 
 $$
--\nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t) \approx -\nabla_{w} y(w_0)^{\top} \nabla_{w} y(w_0)
+-\nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t) \approx -\nabla_{w} y(w_0)^{\top} \nabla_{w} y(w_0) = -\nabla_{w} y(x, w_0)^{\top} \nabla_{w} y(x', w_0)
 $$
 
 <!-- Since we've simplify the notation before, we recover the notation like
@@ -263,11 +265,11 @@ $$
 y(w) = y(x, w)
 $$ -->
 
-## $$= \boldsymbol{\Sigma_{NTK}}(w)$$
+## $$= \boldsymbol{K_{NTK}(x, x')}$$
 
-Again, $\boldsymbol{\Sigma_{NTK}}(w_0)$ is the Neural Tangent Kernel, NTK.
+Again, $\boldsymbol{K_{NTK}(x, x')}$ is the Neural Tangent Kernel, NTK.
 
-The way here to measure the distance between 2 vectors $\nabla_{w} y(x, w_0)$ and $\nabla_{w} y(x', w_0)$ is the **Cosine Similarity** with inner product. The cosine value of 2 identical vector is 1 and 2 orthorgonal vectors is 0 which are totally different.
+The way here to measure the distance between 2 tangents is the **Cosine Similarity** with inner product. The cosine value of 2 identical vector is 1 and 2 orthorgonal vectors is 0 which are totally different. With an additional minus sign, we can regard the **negative similarity as a kind of distance**.
 
 <!-- It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article.  -->
 
