@@ -105,36 +105,49 @@ $$lim_{\eta \to 0} \frac{f(x, w + \eta \ \frac{dL_1(x', w)}{dw}) - f(x, w)}{\eta
 
 $$= lim_{\eta \to 0} \frac{f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)}{\eta}$$
 
-To simplify the notation, let $\eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) = \Delta w$
+To simplify the notation, let $\eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) = \Delta w$. 
+
+We can derive
+
+$$
+lim_{\eta \to 0} \frac{f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)}{\eta}
+$$
+
+$$
+= lim_{\eta \to 0} \frac{f(x, w + \Delta w) - f(x, w)}{\eta}
+$$
 
 Suppose the learning rate $\eta$ is small enough and thus, $w \approx w + \Delta w$. We can expand around $w + \Delta w$ with Taylor expansion
 
-$$f(x, w) \approx f(x, w + \Delta w) + \frac{df(x', w + \Delta w)}{dw} (w - (w + \Delta w))$$
+$$f(x, w) \approx f(x, w + \Delta w) + \frac{df(x, w + \Delta w)}{dw} (w - (w + \Delta w))$$
 
-$$ = f(x, w + \Delta w) - \frac{df(x', w + \Delta w)}{dw}\Delta w$$
+$$ = f(x, w + \Delta w) - \frac{df(x, w + \Delta w)}{dw}\Delta w$$
 
 We can get
 
 $$
-lim_{\eta \to 0} \frac{f(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}) - f(x, w)}{\eta}$$
-
-$$
-= lim_{\eta \to 0} \frac{f(x, w + \Delta w) - f(x, w)}{\eta} 
-= lim_{\eta \to 0} \frac{f(x, w + \Delta w) - (f(x, w + \Delta w) - \frac{df(x', w + \Delta w)}{dw} \Delta w)}{\eta}
+lim_{\eta \to 0} \frac{f(x, w + \Delta w) - f(x, w)}{\eta}
 $$
 
-$$
-= lim_{\eta \to 0} \ \frac{1}{\eta} \frac{df(x', w + \Delta w)}{dw} \Delta w 
-= lim_{\eta \to 0} \ \frac{df(x', w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw})}{dw} \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}
+$$ 
+= lim_{\eta \to 0} \frac{f(x, w + \Delta w) - (f(x, w + \Delta w) - \frac{df(x, w + \Delta w)}{dw} \Delta w)}{\eta}
 $$
 
 $$
-= \frac{df(x', w)}{dw} \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}
+= lim_{\eta \to 0} \ \frac{1}{\eta} \frac{df(x, w + \Delta w)}{dw} \Delta w 
 $$
 
-NTK is defined as 
+$$
+= lim_{\eta \to 0} \ \frac{df(x, w + \eta \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw})}{dw} \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}
+$$
 
-$$k_{1}^{NTK}(x, x') = \frac{df(x',w)}{dw} \frac{df(x', w)}{dw} = \frac{df(x',w_0)}{dw} \frac{df(x', w_0)}{dw}$$
+$$
+= \frac{df(x, w)}{dw} \ (f(x', w) - \bar{y}) \frac{df(x', w)}{dw}
+$$
+
+Since the weight almost not change, let $w = w_0$ and NTK is defined as 
+
+$$k_{1}^{NTK}(x, x') = \frac{df(x,w)}{dw} \frac{df(x', w)}{dw} = \frac{df(x,w_0)}{dw} \frac{df(x', w_0)}{dw}$$
 
 Since $f(x', w) - \bar{y}$ would be very close to 0 while MSE is close to 0, we can simply ignore it. It is trivial that NTK represent the **changes of weights before and after gradient descent**. It measure the difference of weights quantitatively and thus we can approximate the process of gradient descent with Gaussian process.
 
@@ -227,9 +240,17 @@ $$
 -\nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t) \approx -\nabla_{w} y(w_0)^{\top} \nabla_{w} y(w_0)
 $$
 
+<!-- Since we've simplify the notation before, we recover the notation like
+
+$$
+y(w) = y(x, w)
+$$ -->
+
 ## $$= \boldsymbol{\Sigma_{NTK}}(w)$$
 
 Again, $\boldsymbol{\Sigma_{NTK}}(w_0)$ is the Neural Tangent Kernel, NTK.
+
+The way here to measure the distance of 2  
 
 It is very surprise that **NTK doesn't depend on the input data but the inital weights**. Well, why doesn't NTK depend on the input data? Actually, it is proved by [another work](https://arxiv.org/abs/2012.00152) that neural network is just a kernel machine. It is a quite interesting work but I wouldn't cover in this article. 
 
