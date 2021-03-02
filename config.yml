@@ -13,9 +13,9 @@ buildDrafts: true
 buildFuture: false
 buildExpired: false
 
-minify:
-    disableXML: true
-    minifyOutput: true
+# minify:
+#     disableXML: true
+#     minifyOutput: true
 
 menu:
     main:
