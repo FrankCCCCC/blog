@@ -176,12 +176,19 @@ $\begin{equation} x_t = \mathop{\arg\max}_{x \in X} \ \ a_{PI}(x|D_{1:t−1}) \e
 canonifyURLs: true
 ```
 
+## MD 圖片路徑設定 Vol.2
+用了一段時間後，Post數量超過一頁能顯示的範圍，才發現Paginaiton有問題，原因就在於`canonifyURLs: true`會把Pagination的URL都弄成絕對路徑，把網址搞壞。解決方法就是把canonifyURL設回預設值`canonifyURLs: false`，但這樣就會把md圖片又搞壞。
+
+最後最後的解決辦法就是把md的圖片路徑前面加上`/blog`，因為部屬在Github Page上的Reop名是blog，所以Github Page的網址就是`https://{Username}.github.io/blog`，，而Hugo是靜態網頁產生器，Build後的圖片都會serve在`/img`下，所以就直接用專案路徑加Build好的圖片路徑來寫md(改來改去超煩的)。
+
 ## 安裝Utterances留言板
 
 [Utterances Official](https://utteranc.es/)
 
 相較於GitTalk, GitMent等基於Github Issue的留言插件，Utterances要求的權限最少，因此決定採用。設定安裝可參考[此篇](https://www.dazhuanlan.com/2019/12/05/5de8934e6f081/)
 
+## 線上壓縮圖片
+Google推出的[Squoosh](https://squoosh.app/)挺方便的。
 
 # Finally
 最後的成果就如這個Blog，Repo的連結則在[這裡](https://github.com/FrankCCCCC/blog)，有興趣的人應該可以參考一下code。雖然說這種文章應該多少對有需要的人有所幫助，而且很容易就可以獲得成就感(因為寫這種文章不需要動腦)，相對於人生，實在容易許多。
