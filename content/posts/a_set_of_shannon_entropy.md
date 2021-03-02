@@ -22,7 +22,7 @@ where $b$ is the base of the logarithm. The unit of Shannon entropy is **bit** f
 ## The Perspective of Venn Diagram
 We can illustrate the relation between joint entropy, conditional entropy, and mutual entropy as the following figure
 
-![](/img/a_set_of_shannon_entropy/mutual_entropy_venn.png)
+![](/blog/img/a_set_of_shannon_entropy/mutual_entropy_venn.png)
 
 where $H(X), \ H(Y)$ are Shannon entropy of RV $X, \ Y$ respectively. $H(X, Y)$ is the joint entopy. $I(X; Y)$ is the mutual entropy. $H(X|Y), \ H(Y|X)$ are conditional entropy that given $Y$ and $X$ respectively.
 

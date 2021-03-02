@@ -57,9 +57,9 @@ $$\frac{\Vert w_n - w_0 \Vert_2}{\Vert w_0 \Vert_2}$$
 
 where $w_n$ and $w_0$ are the weights at *n*-th training iteration and the initial weights. $\Vert w_n - w_0 \Vert_2$ means the quantity of the differnce between parameters $w_n$ and $w_0$ and it is normalized by the 2-norm $\Vert w_0 \Vert_2$
 
-![losses with 3 widths](/img/nngp_ntk/losses_3widths.png)
+![losses with 3 widths](/blog/img/nngp_ntk/losses_3widths.png)
 
-![normalized weight-changes with 3 widths](/img/nngp_ntk/weightchange_3widths.png)
+![normalized weight-changes with 3 widths](/blog/img/nngp_ntk/weightchange_3widths.png)
 
 As we can see, **the difference of the weights during training decrease as the width of network grows**. As a result, **the trained weights should be very close to the inital weights $w_0$ as the width of network goes to infinity**.
 
@@ -172,7 +172,7 @@ $$F(x) = - \nabla_x f(x) = v$$
 
 A hyperplane and the gradients can be illustrated as the following figure. **The orange surface represents the hyperplane $f$ and the corresponding gradient $\nabla_x f$ of each points $x \in \chi$ on the hyperplane $f$ is the blue arrows in the bottom**. Note that the gradients $\nabla_x f(x)$ here are ascent while gradients of our optimization problem are descent $- \nabla_x f(x)$. They have oppsite direction. Intuitively, the gradients represent **the direction and steepness of the points on the hyperplane** while **the vector field is the velocity vector of the points**. Mathmatically, the gradients and the vector field have the **same function space**, so we let them be equal but not due to the physical perspective.
 
-![](/img/nngp_ntk/3d-gradient-cos.svg)
+![](/blog/img/nngp_ntk/3d-gradient-cos.svg)
 
 Then we introduce another variable **time**. Let $c(t)$ for $c: \mathbb{R} \to \mathbb{R}^d$ represent the dynamics of along the time $t$. The function $c(t)$ gives the position in the space $\chi \in \mathbb{R}^d$ along time $t$.
 
@@ -241,7 +241,7 @@ $$\dot{y}(w_t) = - \nabla_{w} y(w_t)^{\top} \nabla_{w} y(w_t)(y(w_t) - \bar{y})$
 
 However, we've known the mathmatical form of the flow $\dot{y}(w_t)$, but **what's the meaning of the flow $\dot{y}(w_t)$?** Well, we can see the updated weights $w_t$ during the gradient descent as a **trajectory in a high-dimensional space**. Since the learning rate $\eta$ is quite small, the the difference of weights $w_t$ between before and after the gradient descent is very small. As a result, we can see the discrete porgress of the graient descent as a continuous trjectory like the following figure. The flow over the neural network $\dot{y}(w_t)$ is **actually the tangent line of $w_t$**. The flow $\dot{y}(w_t)$ describe the velocity vector of the point $w_t$ and can predicts close-enough next point $w_{t+1}$.
 
-![](/img/nngp_ntk/flow_trajectory.png)
+![](/blog/img/nngp_ntk/flow_trajectory.png)
 
 Since $y(w_t) - \bar{y}$ would be very close to 0, too while MSE is close to 0, we can simply ignore it.
 

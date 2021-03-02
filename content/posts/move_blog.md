@@ -70,12 +70,12 @@ jobs:
 
 最後Deploy步驟則是要把build好的網頁推到`gh-pages` branch上，注意分支`gh-pages`需要手動先創好推上Github才能讓Github Action自動Build，否則會報錯。同時Github會需要全限修改分支內容，要去Settings->Developer settings->Personal access tokens裡面新增token，並給予workflow、admin:repo_hook權限(我有給這些權限，但是不確定那些真的會需要)，按確定後把Token複製下來。
 
-![](/img/move_blog/personal_access_tokens.png)
+![](/blog/img/move_blog/personal_access_tokens.png)
 *感謝[Milk Midi](https://milkmidi.medium.com/%E6%B7%B1%E5%85%A5%E4%BD%86%E4%B8%8D%E6%B7%BA%E5%87%BA-%E5%A6%82%E4%BD%95%E7%94%A8-github-actions-%E8%87%AA%E5%8B%95%E7%99%BC%E4%BD%88-gh-pages-8183464dfe84)整理*
 
 接下來再到your_blog_repo->Settings->Secrets新增Actions secrets，把Token貼上，再把Actions secrets 的名字貼到`YOUR_TOKEN`就好。
 
-![](/img/move_blog/secrets.png)
+![](/blog/img/move_blog/secrets.png)
 *感謝[Milk Midi](https://milkmidi.medium.com/%E6%B7%B1%E5%85%A5%E4%BD%86%E4%B8%8D%E6%B7%BA%E5%87%BA-%E5%A6%82%E4%BD%95%E7%94%A8-github-actions-%E8%87%AA%E5%8B%95%E7%99%BC%E4%BD%88-gh-pages-8183464dfe84)整理*
 
 比較詳細的圖解說明可以參考[這篇](https://milkmidi.medium.com/%E6%B7%B1%E5%85%A5%E4%BD%86%E4%B8%8D%E6%B7%BA%E5%87%BA-%E5%A6%82%E4%BD%95%E7%94%A8-github-actions-%E8%87%AA%E5%8B%95%E7%99%BC%E4%BD%88-gh-pages-8183464dfe84)，太懶得紀錄這種瑣碎操作。
@@ -166,7 +166,7 @@ $\begin{equation} x_t = \mathop{\arg\max}_{x \in X} \ \ a_{PI}(x|D_{1:t−1}) \e
 
 ## MD 圖片路徑設定
 
-由於Hugo在parse圖片連結時並不會對圖片連結進行轉換，也就是說遇到`/img/figure.jpg`會預設用絕對路徑解析，會抓到到`baseurl/img/figure.jpg`的圖片，遇到`img/figure.jpg`則會預設用相對路徑解析，就會抓到`current_url/img/figure.jpg`的圖片。
+由於Hugo在parse圖片連結時並不會對圖片連結進行轉換，也就是說遇到`/blog/img/figure.jpg`會預設用絕對路徑解析，會抓到到`baseurl/blog/img/figure.jpg`的圖片，遇到`img/figure.jpg`則會預設用相對路徑解析，就會抓到`current_url/blog/img/figure.jpg`的圖片。
 
 但麻煩的是Deploy到Github Page上後，預設網址為`https://{user_account}.github.io/{repository_name}/`，網站的絕對路徑前綴就會變成`https://{user_account}.github.io`，而非Hugo config裡面設定的baseurl，會導致圖片完全無法顯示。
 

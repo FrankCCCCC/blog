@@ -22,7 +22,7 @@ Intuitively, Gaussian distribution define the **state space**, while Gaussian Pr
 
 Before we introduce Gaussian process, we should understand Gaussian distriution at first. For a RV(random variable) $X$ that follow Gaussian Distribution $\mathcal{N}(0, 1)$ should be following image:
 
-![](/img/gp/normal01.png)
+![](/blog/img/gp/normal01.png)
 
 The P.D.F should be
 
@@ -30,7 +30,7 @@ $$x \sim \mathcal{N}(\mu, \sigma) = \frac{1}{\sigma \sqrt{2 \pi}} e^{- \frac{1}{
 
 As for Multivariate Gaussian Distribution, given 2 RV $x$, $y$ both 2 RV follow Gaussian Distribution $\mathcal{N}(0, 1)$ we can illustrate it as
 
-![](/img/gp/multivariate_gaussian.png)
+![](/blog/img/gp/multivariate_gaussian.png)
 
 The P.D.F should be
 
@@ -42,7 +42,7 @@ where $\mu$ is the mean and $\Sigma$ is the covariance matrix.
 
 The Gaussian process can be regarded as a **function space**, for example, given a function $f(x)$ The Gaussian process can be illustrated as following:
 
-![](/img/gp/gp.png)
+![](/blog/img/gp/gp.png)
 
 The blue solid line represent the mean of the Gaussian process and the shaded blue area represent the standard deviation(which means the uncertainty of the RV) for the corresponding RV. For example, while $x=-4$, the function $f(4) = \mathcal{N}(0, 2)$. That means the Gaussian process gives a Gaussian distribution $\mathcal{N}(0, 2)$ to describe the possible value of $f(-4)$. The most likely value of $f(-4)$ is 0 (which is the mean of the distribution). As the figure shows, the Gaussian process is quite simple that the mean function is a constant 0 and the standard deviation is 2.
 
@@ -52,11 +52,11 @@ Note that the explaination above is from the point of view of function approxima
 
 After understanding the priori, we can see the posteriori of Gaussian Process.
 
-![](/img/gp/gp_posterior.png)
+![](/blog/img/gp/gp_posterior.png)
 
 In the above figure, we estimate 5 points and re-draw the plot. The uncertainty of the estimated points become very small since we now have actual values of them via estimations.
 
-![](/img/gp/gp_3d.png)
+![](/blog/img/gp/gp_3d.png)
 
 In the view of 3D of the same posteriori, the Z axis means the probability. It illustrates the Gaussian process as a series of varying Gaussian distributions along the different values of $x$.
 
@@ -68,7 +68,7 @@ A Gaussian process is a time continuous stochastic process ${x_t; t \in T}$ is G
 
 For example, any point $x_1, ... x_N \in X, X \in \mathbb{R}^d$(Real Number with dimension $d$) is assigned a random variable $f(x)$ and where the joint distribution of a finite number of these variables $p(f(x_1),…,f(x_N))$ is itself Gaussian:
 
-<!-- ![](/img/gp/gp_def.png) -->
+<!-- ![](/blog/img/gp/gp_def.png) -->
 
 $$p(f|X) = \mathcal{N}(f|\mu, K)$$ 
 
@@ -84,24 +84,24 @@ Some common kernels are:
 - Constant Kernel:
   
   $K_C(x_i, x_j) = C$
-  <!-- ![](/img/gp/const_kernel.svg) -->
+  <!-- ![](/blog/img/gp/const_kernel.svg) -->
 
 - RBF Kernel:
   
   $K_{RBF}(x_i, x_j) = e^{-\frac{|| x_i - x_j ||^2}{2 \sigma^2}}$
-  <!-- ![](/img/gp/rbf_kernel.svg) -->
+  <!-- ![](/blog/img/gp/rbf_kernel.svg) -->
 
 - Periodic Kernel
   
   Suitable for periodic relation
 
   $K_{P}(x_i, x_j) = e^{-\frac{2 \sin^2 (\frac{d}{2})}{\ell^2}}$
-  <!-- ![](/img/gp/periodic_kernel.svg) -->
+  <!-- ![](/blog/img/gp/periodic_kernel.svg) -->
 
 - Polynomial Kernel
   
   $K_{Poly}(x_i, x_j) = ( x_i^{\top}x_j+ c)^d$
-  <!-- ![](/img/gp/polynomial_kernel.svg) -->
+  <!-- ![](/blog/img/gp/polynomial_kernel.svg) -->
 
 - Neural Network Kernel
   
@@ -125,7 +125,7 @@ For more detail, please refer to [A Visual Exploration of Gaussian Processes](ht
 
 Given a training dataset with noise-free function values $f$ at inputs $X$, a GP prior can be converted into a GP posterior $p(f^{\ast}|X^{\ast},X,f)$ which can then be used to make predictions $f^{\ast}$ at new inputs $X^{\ast}$ By definition of a GP, the joint distribution of observed values $f$ and predictions $f^{\ast}$ is again a Gaussian which can be partitioned into
 
-<!-- ![](/img/gp/gp_join.png) -->
+<!-- ![](/blog/img/gp/gp_join.png) -->
 
 $$
 \begin{pmatrix}
@@ -258,7 +258,7 @@ Bayesian UCB inherents UCB. They both give a relation between upper bound and pr
 
 For example, it is common that we know if we sample values from Gaussian distribution, 95% of them are between the mean plus 2 standard deviation and mean subtract 2 standard deviation.
 
-![](/img/gp/gaussian_dist_conf.png)
+![](/blog/img/gp/gaussian_dist_conf.png)
 
 Formally, we define the acquisition function as following
 

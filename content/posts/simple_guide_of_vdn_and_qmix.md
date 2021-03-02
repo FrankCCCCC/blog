@@ -22,7 +22,7 @@ An intuitive eplaination is that we want the weights of any individual value fun
 ### Network Architecture
 The architecture of QMIX is like the following figure
 
-![](/img/simple_guide_of_vdn_and_qmix/qmix_arch.png)
+![](/blog/img/simple_guide_of_vdn_and_qmix/qmix_arch.png)
 
 For each agent a and time step $t$, there is one agent network that represents its individual value function $Q_a(τ^a, u_t^a)$. We represent agent networks as DRQNs that receive the current individual observation $o_t^a$and the last action $u_{t−1}^a$ as input at each time step.
 
