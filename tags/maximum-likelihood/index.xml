@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>maximum likelihood on Golden Hat</title><link>https://frankccccc.github.io/blog/tags/maximum-likelihood/</link><description>Recent content in maximum likelihood on Golden Hat</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 19 Feb 2021 11:15:15 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/tags/maximum-likelihood/index.xml" rel="self" type="application/rss+xml"/><item><title>Some Intuition Of MLE, MAP, and Bayesian Estimation</title><link>https://frankccccc.github.io/blog/posts/some_intuition_of_mle_map_and_bayesian_estimation/</link><pubDate>Fri, 19 Feb 2021 11:15:15 +0800</pubDate><guid>https://frankccccc.github.io/blog/posts/some_intuition_of_mle_map_and_bayesian_estimation/</guid><description>The main different between 3 kinds of estimation is What do we assume for the prior? The Maximum Likelihood Estimation(MLE) doesn&amp;rsquo;t use any prior but only maiximize the probability according to the samples. On the other hand, MAP and Bayesian both use priors to estimate the probability. The Maximum A Posteriori(MAP) only use the probability of single event while Bayesian Estimation see a distribution as the prior.
-To be continue&amp;hellip;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maximum likelihood on Golden Hat</title>
+    <link>https://frankccccc.github.io/blog/tags/maximum-likelihood/</link>
+    <description>Recent content in maximum likelihood on Golden Hat</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Feb 2021 11:15:15 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/tags/maximum-likelihood/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Some Intuition Of MLE, MAP, and Bayesian Estimation</title>
+      <link>https://frankccccc.github.io/blog/posts/some_intuition_of_mle_map_and_bayesian_estimation/</link>
+      <pubDate>Fri, 19 Feb 2021 11:15:15 +0800</pubDate>
+      
+      <guid>https://frankccccc.github.io/blog/posts/some_intuition_of_mle_map_and_bayesian_estimation/</guid>
+      <description>The main different between 3 kinds of estimation is What do we assume for the prior? The Maximum Likelihood Estimation(MLE) doesn&amp;rsquo;t use any prior but only maiximize the probability according to the samples. On the other hand, MAP and Bayesian both use priors to estimate the probability. The Maximum A Posteriori(MAP) only use the probability of single event while Bayesian Estimation see a distribution as the prior.
+To be continue&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

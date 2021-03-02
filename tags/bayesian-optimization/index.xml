@@ -1,5 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>bayesian optimization on Golden Hat</title><link>https://frankccccc.github.io/blog/tags/bayesian-optimization/</link><description>Recent content in bayesian optimization on Golden Hat</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Feb 2021 17:28:58 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/tags/bayesian-optimization/index.xml" rel="self" type="application/rss+xml"/><item><title>A Very Brief Introduction to Gaussian Process and Bayesian Optimization</title><link>https://frankccccc.github.io/blog/posts/intro_gp_bayes_opt/</link><pubDate>Tue, 16 Feb 2021 17:28:58 +0800</pubDate><guid>https://frankccccc.github.io/blog/posts/intro_gp_bayes_opt/</guid><description>Gaussian Process Big Picture and Background Intuitively, Gaussian distribution define the state space, while Gaussian Process define the function space
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bayesian optimization on Golden Hat</title>
+    <link>https://frankccccc.github.io/blog/tags/bayesian-optimization/</link>
+    <description>Recent content in bayesian optimization on Golden Hat</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Feb 2021 17:28:58 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/tags/bayesian-optimization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Very Brief Introduction to Gaussian Process and Bayesian Optimization</title>
+      <link>https://frankccccc.github.io/blog/posts/intro_gp_bayes_opt/</link>
+      <pubDate>Tue, 16 Feb 2021 17:28:58 +0800</pubDate>
+      
+      <guid>https://frankccccc.github.io/blog/posts/intro_gp_bayes_opt/</guid>
+      <description>Gaussian Process Big Picture and Background Intuitively, Gaussian distribution define the state space, while Gaussian Process define the function space
 Before we introduce Gaussian process, we should understand Gaussian distriution at first. For a RV(random variable) $X$ that follow Gaussian Distribution $\mathcal{N}(0, 1)$ should be following image:
 The P.D.F should be
 $$x \sim \mathcal{N}(\mu, \sigma) = \frac{1}{\sigma \sqrt{2 \pi}} e^{- \frac{1}{2} (\frac{- \mu}{\sigma})^2}$$
-As for Multivariate Gaussian Distribution, given 2 RV $x$, $y$ both 2 RV follow Gaussian Distribution $\mathcal{N}(0, 1)$ we can illustrate it as</description></item></channel></rss>
+As for Multivariate Gaussian Distribution, given 2 RV $x$, $y$ both 2 RV follow Gaussian Distribution $\mathcal{N}(0, 1)$ we can illustrate it as</description>
+    </item>
+    
+  </channel>
+</rss>

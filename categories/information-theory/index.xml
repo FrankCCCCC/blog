@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>information theory on Golden Hat</title><link>https://frankccccc.github.io/blog/categories/information-theory/</link><description>Recent content in information theory on Golden Hat</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 23 Feb 2021 01:03:19 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/categories/information-theory/index.xml" rel="self" type="application/rss+xml"/><item><title>A Set of Shannon Entropy</title><link>https://frankccccc.github.io/blog/posts/a_set_of_shannon_entropy/</link><pubDate>Tue, 23 Feb 2021 01:03:19 +0800</pubDate><guid>https://frankccccc.github.io/blog/posts/a_set_of_shannon_entropy/</guid><description>Shannon Entropy For discrete random variable $X$ with events $\{ x_1, &amp;hellip;, x_n \}$ and probability mass function $P(X)$, we defien the Shannon Entropy $H(X)$ as
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>information theory on Golden Hat</title>
+    <link>https://frankccccc.github.io/blog/categories/information-theory/</link>
+    <description>Recent content in information theory on Golden Hat</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Feb 2021 01:03:19 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/categories/information-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Set of Shannon Entropy</title>
+      <link>https://frankccccc.github.io/blog/posts/a_set_of_shannon_entropy/</link>
+      <pubDate>Tue, 23 Feb 2021 01:03:19 +0800</pubDate>
+      
+      <guid>https://frankccccc.github.io/blog/posts/a_set_of_shannon_entropy/</guid>
+      <description>Shannon Entropy For discrete random variable $X$ with events $\{ x_1, &amp;hellip;, x_n \}$ and probability mass function $P(X)$, we defien the Shannon Entropy $H(X)$ as
 $$H(X) = E[-log_b \ P(X)] = - \sum_{i = 1}^{i = n} \ P(x_i) log_b \ P(x_i)$$
 where $b$ is the base of the logarithm. The unit of Shannon entropy is bit for $b = 2$ while nat for $b = e$
-The Perspective of Venn Diagram We can illustrate the relation between joint entropy, conditional entropy, and mutual entropy as the following figure</description></item></channel></rss>
+The Perspective of Venn Diagram We can illustrate the relation between joint entropy, conditional entropy, and mutual entropy as the following figure</description>
+    </item>
+    
+  </channel>
+</rss>

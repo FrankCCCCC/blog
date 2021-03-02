@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>diary on Golden Hat</title><link>https://frankccccc.github.io/blog/categories/diary/</link><description>Recent content in diary on Golden Hat</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Feb 2021 17:28:58 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/categories/diary/index.xml" rel="self" type="application/rss+xml"/><item><title>部落格搬家記</title><link>https://frankccccc.github.io/blog/posts/move_blog/</link><pubDate>Tue, 16 Feb 2021 17:28:58 +0800</pubDate><guid>https://frankccccc.github.io/blog/posts/move_blog/</guid><description>因為寫DL筆記時會用到大量數學符號，就索性把原先在Github上的DL_DB_Quick_Notes搬過來了，配合LATEX寫筆記順手很多，原先的Repo應該只會剩下收集Paper用。而最近生活上有些轉折，也許也會順便放些隨筆雜記，但就依心情而定。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>diary on Golden Hat</title>
+    <link>https://frankccccc.github.io/blog/categories/diary/</link>
+    <description>Recent content in diary on Golden Hat</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Feb 2021 17:28:58 +0800</lastBuildDate><atom:link href="https://frankccccc.github.io/blog/categories/diary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>部落格搬家記</title>
+      <link>https://frankccccc.github.io/blog/posts/move_blog/</link>
+      <pubDate>Tue, 16 Feb 2021 17:28:58 +0800</pubDate>
+      
+      <guid>https://frankccccc.github.io/blog/posts/move_blog/</guid>
+      <description>因為寫DL筆記時會用到大量數學符號，就索性把原先在Github上的DL_DB_Quick_Notes搬過來了，配合LATEX寫筆記順手很多，原先的Repo應該只會剩下收集Paper用。而最近生活上有些轉折，也許也會順便放些隨筆雜記，但就依心情而定。
 目前用的主題是PaperMod，整體設計算令人滿意，只不過在Deploy Hugo遇到蠻多麻煩，這邊簡單記錄一下
 設定Github Page Action 參考PaperMod ExampleSite的gh-pages.yml設定，自己再作一些修改，大致如下
-name: Build GH-Pages on: push: paths-ignore: - 'images/**' - 'LICENSE' - 'README.md' branches: - master workflow_dispatch: # manual run jobs: deploy: runs-on: ubuntu-latest steps: - name: Git checkout uses: actions/checkout@v2 with: ref: master - name: Get Theme run: git submodule update --init --recursive - name: Update theme to Latest commit run: git submodule update --remote --merge - name: Setup hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: 'latest' - name: Build run: hugo --buildDrafts --gc --verbose --minify - name: Deploy uses: peaceiris/actions-gh-pages@v3 with: github_token: ${{ secrets.</description></item></channel></rss>
+name: Build GH-Pages on: push: paths-ignore: - &#39;images/**&#39; - &#39;LICENSE&#39; - &#39;README.md&#39; branches: - master workflow_dispatch: # manual run jobs: deploy: runs-on: ubuntu-latest steps: - name: Git checkout uses: actions/checkout@v2 with: ref: master - name: Get Theme run: git submodule update --init --recursive - name: Update theme to Latest commit run: git submodule update --remote --merge - name: Setup hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: &#39;latest&#39; - name: Build run: hugo --buildDrafts --gc --verbose --minify - name: Deploy uses: peaceiris/actions-gh-pages@v3 with: github_token: ${{ secrets.</description>
+    </item>
+    
+  </channel>
+</rss>
