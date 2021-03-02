@@ -3,6 +3,7 @@ languageCode: "en-us"
 title: "Golden Hat"
 theme: "papermod"
 
+googleAnalytics: G-S9MCZ2NDS7
 canonifyURLs: false
 enableInlineShortcodes: true
 paginate: 5
