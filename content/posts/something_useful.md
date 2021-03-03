@@ -6,6 +6,10 @@ draft: true
 expiryDate: 2021-03-01T20:18:39+00:00
 ---
 
+A detailed guide:
+
+[謦伊的閱讀筆記 - Win10 安裝 CUDA、cuDNN 教學](https://medium.com/ching-i/win10-%E5%AE%89%E8%A3%9D-cuda-cudnn-%E6%95%99%E5%AD%B8-c617b3b76deb)
+
 # Install CUDA
 
 Environment
@@ -17,15 +21,39 @@ Environment
 
 [Download Geforce MX150 Driver](https://us.download.nvidia.com/Windows/461.72/461.72-notebook-win10-64bit-international-dch-whql.exe)
 
-Once install the driver, the installer will install all CUDA Toolkit and cuDNN library needed on TF2 and Pytorch. **You don't need to download and install CUDA Toolkit and cuDNN manually. Allyou need is install the driver.**
+Once install the driver, the installer will install all CUDA Toolkit. **However, you should install the correct version that you need. Once you install the version you need the older version would be removed.**
 
-- The way to download CUDA Toolkit
+You can check whether the driver is installed by ```nvidia-smi```.
+
+Pytorch 1.7.1 is compatable with CUDA 9.2, 10.1, 10.2, 11.0.
+
+## The way to download CUDA Toolkit
+
+You can check whether the CUDA is installed by ```nvcc  --version```.
   
 [Select OS and Version](https://developer.nvidia.com/cuda-downloads)
 
+[Download CUDA Toolkit 10.2 for Windows 10](https://developer.nvidia.com/cuda-10.2-download-archive)
+
 [Download CUDA Toolkit 11.2 for Windows 10](https://developer.download.nvidia.com/compute/cuda/11.2.1/local_installers/cuda_11.2.1_461.09_win10.exe)
 
-- The way to download cuDNN Library
+## The way to download cuDNN Library
+
+The GPU driver wouldn't install cuDNN library and you need to install it manually.
+
+You can check the CUDA version by checking the file ```C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include\cudnn.h```.
+
+For example, if the file was
+
+```
+define CUDNN_MAJOR 5
+
+define CUDNN_MINOR 1
+
+define CUDNN_PATCHLEVEL 10
+```
+
+the cuDNN version is 5.1.10
   
 [Select Verions](https://developer.nvidia.com/rdp/cudnn-download)
 
@@ -43,8 +71,16 @@ pip install --upgrade pip
 pip install tensorflow
 ```
 
+Note that in my experience, Python 3.7.9 hase less compatible issues.
+
 ## Install Pytorch GPU
-[]()
+[](https://pytorch.org/)
+
+```
+conda create --name torch-gpu python=3.7.9
+conda activate torch-gpu
+pip install torch===1.7.1 torchvision===0.8.2 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+```
 
 # SSH Guide
 
