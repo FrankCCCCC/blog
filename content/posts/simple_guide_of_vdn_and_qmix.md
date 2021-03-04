@@ -2,6 +2,16 @@
 title: "Simple Guide Of VDN And QMIX"
 date: 2021-02-26T01:13:41+08:00
 draft: true
+
+author: SY Chou
+# description: ""
+categories: ["multi-agent RL", "RL"]
+# series: [""]
+tags: ["RL", "deep learning", "multi-agent RL"]
+
+cover:
+    image: "img/just_imgs/inside_glacier.jpg"
+    relative: false
 ---
 
 ## Value-Decomposition Network(VDN)
