@@ -6,7 +6,7 @@ theme: "papermod"
 googleAnalytics: G-S9MCZ2NDS7
 canonifyURLs: false
 enableInlineShortcodes: true
-paginate: 5
+paginate: 10
 # paginatePath: "/page/"
 
 enableRobotsTXT: true
