@@ -78,9 +78,9 @@ The MuZero model $\mu_{\theta}$ with parameters $\theta$, conditioned on past ob
 The MuZero train in the environment like part C of Figure1.   
 All parameters of the model are **trained jointly to accurately match the policy, value, and reward, for every hypothetical step ***k***, to corresponding target values observed after ***k*** actual time-steps ***t*** have elapsed.(That is predict the policy, value, and reward after ***k*** steps from current time-step ***t***.)** The training objective is to **minimise the error between predicted policy pkt and MCTS search policy ***πt+k*****
 
-For trade-off between accuracy and stability, we allow for long episodes with discounting and intermediate rewards by bootstrapping ***n*** steps into the future from the search value. Final outcomes {lose, draw, win} in board games are treated as rewards ***ut ∈ {−1, 0, +1}*** occurring at the final step of the episode.
+For trade-off between accuracy and stability, we allow for long episodes with discounting and intermediate rewards by bootstrapping $n$ steps into the future from the search value. Final outcomes {lose, draw, win} in board games are treated as rewards $u_t \in \\{ −1, 0, +1 \\}$ occurring at the final step of the episode.
 
-Thus, MuZero define ***u*** as folowing:
+Thus, MuZero define $u$ as folowing:
 
 ![](/blog/img/alphago_to_muzero/muzero/muzero_def_z.png)
 
