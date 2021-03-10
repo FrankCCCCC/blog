@@ -52,9 +52,13 @@ taxonomies:
 params:
     env: production
     author: SY Chou
+    # Theme
     defaultTheme: dark
     disableThemeToggle: false
     enableEmoji: true
+    comment_light_theme: github-light
+    comment_dark_theme: photon-dark
+    # Post
     hidemeta: false
     ShowBreadCrumbs: true
     ShowReadingTime: true
@@ -63,9 +67,10 @@ params:
     disableSpecial1stPost: false
     showtoc: false
     tocopen: false
+    ShowShareButtons: true
 
-    comment_light_theme: github-light
-    comment_dark_theme: photon-dark
+    assets:
+        favicon: /blog/img/just_imgs/gold_empty_circle.svg
 
     label:
         text: "Golden Hat"

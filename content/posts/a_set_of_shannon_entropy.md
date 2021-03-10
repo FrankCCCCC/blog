@@ -2,7 +2,9 @@
 title: "A Set of Shannon Entropy"
 date: 2021-02-23T01:03:19+08:00
 draft: false
+weight: 2
 
+# description: "A simple introduction of Shannon entropy, conditional and mutual entropy"
 categories: ["information theory"]
 series: []
 tags: ["statistics", "information theory", "Shannon entropy"]
