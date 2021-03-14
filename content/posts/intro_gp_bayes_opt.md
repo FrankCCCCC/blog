@@ -5,10 +5,18 @@ draft: False
 author: SY Chou
 weight: 1
 
-# description: "A simple introduction of Gaussian Process and Bayesian Optimization"
+description: "An introduction of Gaussian Process and Bayesian Optimization"
 categories: ["numerical optimization", "machine learning"]
 series: []
 tags: ["gaussian process", "bayesian optimization", "machine learning", "random process", "numerical optimization", "bayes"]
+
+keywords:
+- Gaussian process
+- gp
+- Bayesian optimization
+- machine learning
+- ml
+- numerical optimization
 
 cover:
     image: "img/just_imgs/ny_skyline.jpg"

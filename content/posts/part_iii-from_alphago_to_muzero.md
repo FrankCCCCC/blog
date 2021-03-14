@@ -2,12 +2,23 @@
 title: "Part III - From AlphaGo to MuZero"
 date: 2021-03-04T17:02:31+08:00
 draft: true
-
 author: SY Chou
-# description: ""
+
+description: "An introduction of MuZero"
 categories: ["model-based RL", "RL"]
 series: ["From Alphago to Muzero"]
 tags: ["RL", "deep learning", "model-based RL"]
+
+keywords:
+- MuZero
+- model-based RL
+- reinforcement learning
+- RL
+- deep reinforcement learning
+- DRL
+- deep learning
+- DL
+- DeepMind
 
 cover:
     image: "img/just_imgs/muzero.webp"
