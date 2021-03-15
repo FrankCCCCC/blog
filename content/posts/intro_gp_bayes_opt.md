@@ -12,6 +12,7 @@ tags: ["gaussian process", "bayesian optimization", "machine learning", "random 
 
 keywords:
 - Gaussian process
+- Gaussian
 - gp
 - Bayesian optimization
 - machine learning

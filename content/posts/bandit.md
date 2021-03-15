@@ -2,6 +2,26 @@
 title: "An Introduction to Multi-Armed Bandit Problem"
 date: 2021-02-16T20:11:41+08:00
 draft: true
+author: SY Chou
+description: "An introduction to multi-armed bandit problem, including UCB, Epsilon greedy and, Thompson sampling algorithms"
+
+categories: ["machine learning", "RL"]
+series: []
+tags: ["RL", "machine learning"]
+
+keywords:
+- reinforcement learning
+- RL
+- deep reinforcement learning
+- DRL
+- deep learning
+- DL
+- multi-armed bandit
+- bandit
+- upper confidence bounds
+- UCB
+- epsilon greedy
+- thompson sampling
 
 cover:
     image: "img/just_imgs/bandit.jpg"

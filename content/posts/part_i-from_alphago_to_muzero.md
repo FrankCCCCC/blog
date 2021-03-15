@@ -2,9 +2,9 @@
 title: "Part I - From AlphaGo to MuZero"
 date: 2021-02-19T01:14:40+08:00
 draft: true
-
 author: SY Chou
-# description: ""
+
+description: "A paper review of Mastering the game of Go with deep neural networks and tree search and an introduction of AlphaGo"
 categories: ["model-based RL", "RL"]
 series: ["From Alphago to Muzero"]
 tags: ["RL", "deep learning", "model-based RL"]

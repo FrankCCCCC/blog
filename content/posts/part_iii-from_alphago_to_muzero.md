@@ -4,12 +4,15 @@ date: 2021-03-04T17:02:31+08:00
 draft: true
 author: SY Chou
 
-description: "An introduction of MuZero"
+description: "A paper review of Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model and an introduction of MuZero"
 categories: ["model-based RL", "RL"]
 series: ["From Alphago to Muzero"]
 tags: ["RL", "deep learning", "model-based RL"]
 
 keywords:
+- AlphaGo
+- AlphaGo Zero
+- AlphaZero
 - MuZero
 - model-based RL
 - reinforcement learning
