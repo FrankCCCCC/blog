@@ -4,10 +4,15 @@ date: 2021-02-16T17:28:58+08:00
 draft: false
 weight: 2
 
-# description: "Introduce"
+description: "紀錄一下Deploy Hugo Site和設定Github Action遇到的坑"
 categories: ["front-end", "diary"]
 series: []
 tags: ["front-end", "Hugo", "blog", "diary", "Utterance"]
+
+keywords:
+- Hugo
+- Github Action
+- Front-End
 
 cover:
     image: "img/just_imgs/taipei3.jpg"

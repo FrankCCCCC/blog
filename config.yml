@@ -50,8 +50,10 @@ taxonomies:
     series: series
 
 params:
+    # Global Settings
     env: production
     author: SY Chou
+    description: Machine Learning, Programming and, Murmuring
     # Theme
     defaultTheme: dark
     disableThemeToggle: false
