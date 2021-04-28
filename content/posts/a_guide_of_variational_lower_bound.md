@@ -81,7 +81,7 @@ $$
 = E_q[log \ p(X, Z)] + H[Z] \tag{5}
 $$
 
-Where $q(Z)$ in Eq. (2) is the **approximattion of the true posterior distribution $p(Z|X)$**, since we don't know the distribution of the $p(Z|X)$ of hidden state $Z$. To derive the lower bound, we apply Jensen's inequality in Eq. (4).
+Where $q(Z)$ in Eq. (2) is the **approximation of the true posterior distribution $p(Z|X)$**, since we don't know the distribution of the $p(Z|X)$ of hidden state $Z$. To derive the lower bound, we apply Jensen's inequality in Eq. (4).
 
 Also, the Eq. (5) is the ELBO.
 
