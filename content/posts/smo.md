@@ -8,7 +8,7 @@ series: []
 tags: ["SVM", "information theory"]
 
 cover:
-    image: "img/just_imgs/whirl_flow.jpg"
+    image: "img/just_imgs/snow_forest.jpg"
     relative: false
 ---
 
