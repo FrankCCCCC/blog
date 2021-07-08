@@ -7,6 +7,9 @@ categories: ["machine learning"]
 series: []
 tags: ["SVM", "information theory"]
 
+ShowToc: true
+TocOpen: true
+
 cover:
     image: "img/just_imgs/snow_forest.jpg"
     relative: false
@@ -14,7 +17,7 @@ cover:
 
 ## 1. Abstract
 
-In this article, I will derive SMO algorithm and the Fourier kernel approximation which are well-known algorithm for kernel machine. **SMO** can solve optimization problem of SVM efficiently and the **Fourier kernel approximation** is a kind of kernel approximation that can speed up the computation of the kernel matrix. In the last section, I will apply **EDA on the dataset "Women's Clothing E-Commerce Review"** and conduct a evaluation of my manual SVM.
+In this article, I will derive SMO algorithm and the Fourier kernel approximation which are well-known algorithm for kernel machine. **SMO** can solve optimization problem of SVM efficiently and the **Fourier kernel approximation** is a kind of kernel approximation that can speed up the computation of the kernel matrix. In the last section, I will conduct a evaluation of my manual SVM **on the simulation dataset and "Women's Clothing E-Commerce Review Dataset"**.
 
 <!-- ## Lagrange Multiplier -->
 
@@ -33,9 +36,7 @@ The SMO(Sequential Minimal Optimization) algorithm is proposed from the paper **
 We've known he dual problem of soft-SVM is
 
 $$
-\sup_{\alpha} \sum_{i=1}^{N} \alpha_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_i \alpha_j y_i y_j k(x_i, x_j) \\
-
-\text{subject to} \  0 \leq \alpha_i \leq C, \sum_{i=1}^{N} \alpha_i y_i= 0
+\sup_{\alpha} \sum_{i=1}^{N} \alpha_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_i \alpha_j y_i y_j k(x_i, x_j) \newline \text{subject to} \  0 \leq \alpha_i \leq C, \sum_{i=1}^{N} \alpha_i y_i= 0
 $$
 
 We also define the kernel.
@@ -50,10 +51,10 @@ However, it's very hard to solve because we need to optimize $N$ variables. As a
 
 ### 2.1 Notation
 
-We denote the target function as $\mathcal{L}_d(\alpha, C)$
+We denote the target function as $\mathcal{L}(\alpha, C)$
 
 $$
-\mathcal{L}_d(\alpha) = \sum_{i=1}^{N} \alpha_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_i \alpha_j y_i y_j k(x_i, x_j)
+\mathcal{L} (\alpha) = \sum_{i=1}^{N} \alpha_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_i \alpha_j y_i y_j k(x_i, x_j)
 $$
 
 We also denote the kernel of $x_1, x_2$ as $K_{1, 2} = k(x_1, x_2)$.
@@ -63,30 +64,24 @@ We also denote the kernel of $x_1, x_2$ as $K_{1, 2} = k(x_1, x_2)$.
 First, we need to pick 2 variables to update in sequence, so we split the variables $\alpha_1, \alpha_2$ from the summation. 
 
 $$
-\mathcal{L}_d(\alpha) = 
+\mathcal{L}(\alpha) = 
 \alpha_1 + \alpha_2 - 
-\frac{1}{2} \alpha_1^2 y_1^2 K_{1,1} - \frac{1}{2} \alpha_2^2 y_2^2 K_{2,2} \\
-
--\frac{1}{2} \alpha_1 \alpha_2 y_1 y_2 K_{1, 2} - \frac{1}{2} \alpha_2 \alpha_1 y_2 y_1 K_{2, 1}\\
-
--\frac{1}{2} \alpha_1 y_1 \sum_{i=3}^{N} \alpha_i y_i K_{i,1} - \frac{1}{2} \alpha_1 y_1 \sum_{i=3}^{N} \alpha_i y_i K_{1, i} \\
-
--\frac{1}{2} \alpha_2 y_2 \sum_{i=3}^{N} \alpha_i y_i K_{i,2} - \frac{1}{2} \alpha_2 y_2 \sum_{i=3}^{N} \alpha_i y_i K_{2, i} \\
-
-+ \sum_{i=3}^{N} \alpha_i - \frac{1}{2} \sum_{i=3}^{N} \sum_{j=3}^{N} \alpha_i \alpha_j y_i y_j k(x_i, x_j)
+\frac{1}{2} \alpha_1^2 y_1^2 K_{1,1} - \frac{1}{2} \alpha_2^2 y_2^2 K_{2,2} \newline
+-\frac{1}{2} \alpha_1 \alpha_2 y_1 y_2 K_{1, 2} - \frac{1}{2} \alpha_2 \alpha_1 y_2 y_1 K_{2, 1} \newline
+-\frac{1}{2} \alpha_1 y_1 \sum_{i=3}^{N} \alpha_i y_i K_{i,1} -\frac{1}{2} \alpha_1 y_1 \sum_{i=3}^{N} \alpha_i y_i K_{1, i} \newline
+-\frac{1}{2} \alpha_2 y_2 \sum_{i=3}^{N} \alpha_i y_i K_{i,2} -\frac{1}{2} \alpha_2 y_2 \sum_{i=3}^{N} \alpha_i y_i K_{2, i} \newline
++\sum_{i=3}^{N} \alpha_i - \frac{1}{2} \sum_{i=3}^{N} \sum_{j=3}^{N} \alpha_i \alpha_j y_i y_j k(x_i, x_j)
 $$
 
 $$
 = \alpha_1 + \alpha_2 - 
-\frac{1}{2} \alpha_1^2 y_1^2 K_{1,1} - \frac{1}{2} \alpha_2^2 y_2^2 K_{2,2} - \alpha_1 \alpha_2 y_1 y_2 K_{1, 2}\\
-
+\frac{1}{2} \alpha_1^2 y_1^2 K_{1,1} - \frac{1}{2} \alpha_2^2 y_2^2 K_{2,2} - \alpha_1 \alpha_2 y_1 y_2 K_{1, 2} \newline 
 -\alpha_1 y_1 \sum_{i=3}^{N} \alpha_i y_i K_{i,1} - \alpha_2 y_2 \sum_{i=3}^{N} \alpha_i y_i K_{i,2} + \mathcal{Const}
 $$
 
 $$
 = \alpha_1 + \alpha_2 - 
-\frac{1}{2} \alpha_1^2 K_{1,1} - \frac{1}{2} \alpha_2^2 K_{2,2} - \alpha_1 \alpha_2 y_1 y_2 K_{1, 2}\\
-
+\frac{1}{2} \alpha_1^2 K_{1,1} - \frac{1}{2} \alpha_2^2 K_{2,2} - \alpha_1 \alpha_2 y_1 y_2 K_{1, 2} \newline
 -\alpha_1 y_1 \sum_{i=3}^{N} \alpha_i y_i K_{i,1} - \alpha_2 y_2 \sum_{i=3}^{N} \alpha_i y_i K_{i,2} + \mathcal{Const}
 $$
 
@@ -111,6 +106,13 @@ Thus, we can rewrite the hyperplane $f_{\phi}(x)$ with kernel.
 $$
 f_{\phi}(x) = w^{\top} \phi(x) + b = b + \sum_{i=1}^N \alpha_i y_i k(x_i, x)
 $$
+
+The corresponding code:
+
+```python
+def __f(self, i):
+    return snp.dot((self.alpha * self.y), self.K[i, :]) + self.b
+```
 
 We also denote $v_1, v_2$ as
 
@@ -165,19 +167,19 @@ $$
 Replace the symbol $\alpha_1, v_1, v_2$
 
 $$
-\mathcal{L}_d(\alpha) = 
-(\zeta y_1  - \alpha_2 y_1 y_2) + \alpha_2\\
-
--\frac{1}{2} (\zeta y_1  - \alpha_2 y_1 y_2)^2 K_{1,1} - \frac{1}{2} \alpha_2^2 K_{2,2} - (\zeta y_1  - \alpha_2 y_1 y_2) \alpha_2 y_1 y_2 K_{1, 2}\\
-
+\mathcal{L}(\alpha) = 
+(\zeta y_1  - \alpha_2 y_1 y_2) + \alpha_2 
+\newline
+-\frac{1}{2} (\zeta y_1  - \alpha_2 y_1 y_2)^2 K_{1,1} - \frac{1}{2} \alpha_2^2 K_{2,2} - (\zeta y_1  - \alpha_2 y_1 y_2) \alpha_2 y_1 y_2 K_{1, 2} 
+\newline
 -(\zeta y_1  - \alpha_2 y_1 y_2) y_1 v_1 - \alpha_2 y_2 v_2
 $$
 
 $$
-= (\zeta y_1  - \alpha_2 y_1 y_2) + \alpha_2\\
-
--\frac{1}{2} (\zeta^2 + \alpha_2^2 - 2 \zeta \alpha_2 y_2) K_{1,1} - \frac{1}{2} \alpha_2^2 K_{2,2} - (\zeta \alpha_2 y_2  - \alpha_2^2) K_{1, 2}\\
-
+= (\zeta y_1  - \alpha_2 y_1 y_2) + \alpha_2 
+\newline
+-\frac{1}{2} (\zeta^2 + \alpha_2^2 - 2 \zeta \alpha_2 y_2) K_{1,1} - \frac{1}{2} \alpha_2^2 K_{2,2} - (\zeta \alpha_2 y_2  - \alpha_2^2) K_{1, 2}
+\newline
 -(\zeta - \alpha_2 y_2) v_1 - \alpha_2 y_2 v_2
 $$
 
@@ -206,8 +208,7 @@ $$
 **2.2.4 Derive Gradient of $\alpha_2$**
 
 $$
-\frac{\partial \mathcal{L}_d(\alpha)}{\partial \alpha_2}
-
+\frac{\partial \mathcal{L}(\alpha)}{\partial \alpha_2}
 = -y_1 y_2 + 1 - \frac{1}{2} (2 \alpha_2 - 2 \zeta y_2) K_{1,1} - \alpha_2 K_{2, 2} - (\zeta y_2 - 2 \alpha_2) K_{1, 2} - (- y_2) v_1 - y_2 v_2
 $$
 
@@ -222,7 +223,7 @@ $$
 Replace $v_1 - v_2$ containing old $\alpha_1^{old}, \alpha_2^{old}$ (derived in 2.2.3)
 
 $$
-\frac{\partial \mathcal{L}_d(\alpha)}{\partial \alpha_2} = -\alpha_2 (K_{1, 1} + K_{2, 2} - 2 K_{1, 2}) + \zeta y_2 K_{1, 1}- \zeta y_2 K_{1, 2} - y_1 y_2 + y_2 [ \ f_{\phi}(x_1) - f_{\phi}(x_2) - \zeta  K_{1, 1} + \zeta K_{1, 2} + ( K_{1, 1} + K_{2, 2} -  2 K_{1, 2}) \alpha_2^{old} y_2 \ ] + 1
+\frac{\partial \mathcal{L}(\alpha)}{\partial \alpha_2} = -\alpha_2 (K_{1, 1} + K_{2, 2} - 2 K_{1, 2}) + \zeta y_2 K_{1, 1}- \zeta y_2 K_{1, 2} - y_1 y_2 + y_2 [ \ f_{\phi}(x_1) - f_{\phi}(x_2) - \zeta  K_{1, 1} + \zeta K_{1, 2} + ( K_{1, 1} + K_{2, 2} -  2 K_{1, 2}) \alpha_2^{old} y_2 \ ] + 1
 $$
 
 $$
@@ -256,6 +257,22 @@ To make the notation more clear to identify, we denote $\alpha_2^{new}$ as the n
 $$
 \alpha_2^{new} = \alpha_2^{old} + \frac{y_2 (E_1 - E_2)}{\eta}
 $$
+
+The corresponding code:
+
+```python
+def __E(self, i):
+    return self.__f(i) - self.y[i]
+
+def __eta(self, i, j):
+    return self.K[i, i] + self.K[j, j] - 2 * self.K[i, j]
+
+def __alpha_j_new(self, i, j):
+    E_i = self.__E(i)
+    E_j = self.__E(j)
+    eta = self.__eta(i, j)
+    return self.alpha[j] + (self.y[j] * (E_i - E_j) / eta), E_i, E_j, eta
+```
 
 ### 2.3 Step 2. Clip with Bosk Constraint
 
@@ -326,6 +343,23 @@ $$
 \alpha_2^* = CLIP(\alpha_2^{new}, B_L, B_U)
 $$
 
+The corresponding code:
+
+```python
+def __bound(self, i, j):
+        if self.y[i] == self.y[j]:
+            B_U = min(self.C, self.alpha[j] + self.alpha[i])
+            B_L = max(0, self.alpha[j] + self.alpha[i] - self.C)
+        else:
+            B_U = min(self.C, self.C + self.alpha[j] - self.alpha[i])
+            B_L = max(0, self.alpha[j] - self.alpha[i])
+        return B_U, B_L
+def __update_alpha_j(self, i, j):
+        B_U, B_L = self.__bound(i, j)
+        alpha_j_star, E_i, E_j, eta = self.__alpha_j_new(i, j)
+        return np.clip(alpha_j_star, B_L, B_U), E_i, E_j, eta
+```
+
 **2.3.4 Update $\alpha_1$**
 
 We've know the complementary slackness.
@@ -343,6 +377,13 @@ $$
 $$
 \alpha_1^* = \alpha_1^{old} + y_1 y_2(\alpha_2^{old} - \alpha_2^*)
 $$
+
+The corresponding code:
+
+```python
+def __update_alpha_i(self, i, j, alpha_j_star):
+    return self.alpha[i] + self.y[i] * self.y[j] * (self.alpha[j] - alpha_j_star)
+```
 
 ### 2.4 Step 3. Update Bias
 
@@ -381,6 +422,24 @@ When the data point $x_i, x_j$ are both not on the margin, we choose the average
 $$
 b^* = \frac{b_1^* + b_2^*}{2}
 $$
+
+The code of updating bias.
+
+```python
+def __update_b(self, i, j, alpha_i_star, alpha_j_star, E_i, E_j):
+        b_star = 0
+        b_i_star = -E_i - self.y[i] * self.K[i, i] * (alpha_i_star - self.alpha[i]) - self.y[j] * self.K[j, i] * (alpha_j_star - self.alpha[j]) + self.b
+        b_j_star = -E_j - self.y[i] * self.K[i, j] * (alpha_i_star - self.alpha[i]) - self.y[j] * self.K[j, j] * (alpha_j_star - self.alpha[j]) + self.b
+
+        if alpha_i_star <= self.C and alpha_i_star >= 0:
+            b_star = b_i_star
+        elif alpha_j_star <= self.C and alpha_j_star >= 0:
+            b_star = b_j_star
+        else:
+            b_star = (b_i_star + b_j_star) / 2
+        
+        return b_star
+```
 
 For more detail, please see the pseudo code.
 
@@ -444,7 +503,7 @@ while($move > \epsilon$ and $iter \leq \text{max-iter}$):
 
   - $move = move + |\alpha_1^* - \alpha_1| + |\alpha_2^* - \alpha_2| + |b^* - b|$
 
-  - $\alpha_i = \alpha_i^*, \quad \alpha_j = \alpha_j^*, \quad b = b^*$
+  - Let $\alpha_i = \alpha_i^* \quad \alpha_j = \alpha_j^* \quad b = b^*$
 
 - $iter = iter + 1$
 ---

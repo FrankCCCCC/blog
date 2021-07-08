@@ -54,6 +54,7 @@ params:
     env: production
     author: SY Chou
     description: Machine Learning, Programming and, Murmuring
+    math: true
     # Theme
     defaultTheme: dark
     disableThemeToggle: false
@@ -66,10 +67,23 @@ params:
     ShowReadingTime: true
     comments: true
     ShowPostNavLinks: true
+    ShowCodeCopyButtons: true
     disableSpecial1stPost: false
     showtoc: false
     tocopen: false
     ShowShareButtons: true
+
+    markup:
+        goldmark:
+            renderer:
+                unsafe: true
+            highlight:
+                # anchorLineNos: true
+                codeFences: true
+                guessSyntax: true
+                lineNos: true
+                # noClasses: false
+                style: monokai
 
     assets:
         favicon: /blog/img/just_imgs/gold_empty_circle.svg
