@@ -1,11 +1,12 @@
 ---
 title: "A Review of SVM and SMO"
 date: 2021-07-08T12:39:16+08:00
-draft: true
+draft: false
+weight: 1
 
 categories: ["machine learning"]
 series: []
-tags: ["SVM", "information theory"]
+tags: ["SVM", "machine learning", "numerical optimization"]
 
 ShowToc: true
 TocOpen: true
@@ -14,6 +15,8 @@ cover:
     image: "img/just_imgs/snow_forest.jpg"
     relative: false
 ---
+
+Note: full code is on my [github](https://github.com/FrankCCCCC/math_new/tree/master/statistical_computing/final/demo).
 
 ## 1. Abstract
 
