@@ -16,7 +16,7 @@ cover:
     relative: false
 ---
 
-**Note: full code is on my [github](https://github.com/FrankCCCCC/math_new/tree/master/statistical_computing/final/demo).**
+**Note: full code is on my [github](https://github.com/FrankCCCCC/ml_collection/tree/master/svm).**
 
 ## 1. Abstract
 
