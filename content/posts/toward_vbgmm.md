@@ -127,9 +127,7 @@ $$
 \nu_n = \nu_0 + n
 $$
 
-$$
-W^{-1}_n = W^{-1}_0 + \sum_{i=1}^{n} (x_i - \bar{x}) (x_i - \bar{x})^{\top} + \frac{n \beta_0}{n + \beta_0} (\bar{x} - m_0) (\bar{x} - m_0)^{\top}
-$$
+`$$W^{-1}_n = W^{-1}_0 + \sum_{i=1}^{n} (x_i - \bar{x}) (x_i - \bar{x})^{\top} + \frac{n \beta_0}{n + \beta_0} (\bar{x} - m_0) (\bar{x} - m_0)^{\top}$$`
 
 **With Gaussian Mixture Model**
 
