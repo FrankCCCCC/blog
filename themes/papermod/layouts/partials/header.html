@@ -123,5 +123,7 @@
             {{- end -}}
         </ul>
     </nav>
+    {{ if or .Params.isMathJax .Site.Params.isMathJax }}
     {{ partial "mathjax_support.html" . }}
+    {{ end }}
 </header>

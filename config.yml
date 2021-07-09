@@ -54,7 +54,10 @@ params:
     env: production
     author: SY Chou
     description: Machine Learning, Programming and, Murmuring
+    # Enable Katex
     math: false
+    # Enable MathJax
+    isMathJax: true
     # Theme
     defaultTheme: dark
     disableThemeToggle: false

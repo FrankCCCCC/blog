@@ -5,7 +5,7 @@ draft: false
 weight: 1
 
 categories: ["machine learning", "statistics"]
-series: []
+series: ["From EM To VB-GMM"]
 tags: ["EM", "machine learning", "statistics", "bayes"]
 
 ShowToc: true

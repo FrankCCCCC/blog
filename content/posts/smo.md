@@ -511,6 +511,62 @@ while($move > \epsilon$ and $iter \leq \text{max-iter}$):
 - $iter = iter + 1$
 ---
 
+Here is the Python code:
+
+```python
+def fit(self, X, y):
+        self.X = np.array(X)
+        self.y = np.reshape(np.array(y), (-1, ))
+        self.n, self.dim = self.X.shape
+        
+        self.K = self.cal_kernel(self.X)
+
+        self.alpha = np.zeros(self.n)
+        self.b = 0
+
+        iter = 0
+        loss = np.inf
+        move = np.inf
+
+        while iter < self.max_iter and move > self.epsilon:
+            loss = move = 0
+
+            for i in range(self.n):
+                j = self.__choose_j(i)
+
+                alpha_j_star, E_i, E_j, eta = self.__update_alpha_j(i, j)
+                if eta <= 0:
+                    self.warning('Eta <= 0')
+                    continue
+
+                alpha_i_star = self.__update_alpha_i(i, j, alpha_j_star)
+                if abs(alpha_j_star - self.alpha[j]) < 0.00001:
+                    self.warning('alpha_j not moving enough')
+                    continue
+
+                b_star = self.__update_b(i, j, alpha_i_star, alpha_j_star, E_i, E_j)
+
+                # Calculate the movement of alpha and b
+                move = move + abs(alpha_i_star - self.alpha[i]) + abs(alpha_j_star - self.alpha[j]) + abs(b_star - self.b)
+
+                # Update variables
+                self.alpha[i] = alpha_i_star
+                self.alpha[j] = alpha_j_star
+                self.b = b_star
+            
+            # Calculate the loss
+            loss = sum(map(lambda x: abs(self.__E(x)), np.arange(self.n)))
+            # Calculate the accuracy
+            acc = self.acc()
+            self.loss_history.append(loss)
+            self.move_history.append(move)
+            self.acc_history.append(acc)
+
+            # if not skip:
+            iter += 1
+            self.info("Iter: ", iter, " | Loss: ", loss, " | Move: ", move, " | Acc: ", acc)
+```
+
 ## 3. Fourier Kernel Approximation
 
 The Fourier kernel approximation is proposed from the paper **Random Features for Large-Scale Kernel Machines** on NIPS'07. It's a widely-used approximation to accelerate the kernel computing especially for the high dimensional dataset. For a dataset with dimension $D$ and data points $N$, the time complexity of computing the exact kernel is $\mathcal{O}(DN^2)$ and the Fourier kernel approximation is $\mathcal{O}(SN^3)$ with $S$ samples. While the dimension goes up, the approximation remains the same computing time because it is regardless to the dimension of the dataset.
