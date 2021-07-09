@@ -420,7 +420,7 @@ $$
 = -E_2 - y_1 K_{1, 2} (\alpha_1^* - \alpha_1^{old}) - y_2 K_{2, 2} (\alpha_2^* - \alpha_2^{old}) + b
 $$
 
-When the data point $x_i, x_j$ are both not on the margin, we choose the average of $b_1^*, b_2^*$ as the updated value.
+When the data point $x_i, x_j$ are both not on the margin, we choose the average of $b_1^* \ and \  b_2^*$ as the updated value.
 
 $$
 b^* = \frac{b_1^* + b_2^*}{2}

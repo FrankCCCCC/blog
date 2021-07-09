@@ -54,7 +54,7 @@ params:
     env: production
     author: SY Chou
     description: Machine Learning, Programming and, Murmuring
-    math: true
+    math: false
     # Theme
     defaultTheme: dark
     disableThemeToggle: false
