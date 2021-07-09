@@ -16,6 +16,8 @@ cover:
     relative: false
 ---
 
+Note: the code in R is on my [Github](https://github.com/FrankCCCCC/math_new/tree/master/statistical_computing/Mid/demo)
+
 ## 3. Variational Bayesian Gaussian Mixture Model(VB-GMM)
 
 ### 3.1 Graphical Model
