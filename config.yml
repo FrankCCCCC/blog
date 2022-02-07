@@ -106,7 +106,7 @@ params:
         - name: "github"
           url: "https://github.com/FrankCCCCC"
         - name: "linkedin"
-          url: "https://www.linkedin.com/in/%E8%81%96%E8%AB%BA-%E5%91%A8-ba89b2184/"
+          url: "https://www.linkedin.com/in/sheng-yen-chou-ba89b2184"
 
     profileMode:
         enabled: false
