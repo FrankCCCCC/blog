@@ -2,4 +2,4 @@
 They evaluate 2 version of approaches on stochastic continuous control tasks:
 (1) Recurrence-Based Adaptive Learner (ReBAL)
 (2) Gradient-Based Adaptive Learner (GrBAL)
-Objective Setting-Up To adapt the dynamic environment, we require a learned model $p_{\theta}^*$ to adapt, using an update rule $u_{\psi}^*$ after seeing M data points from some new &amp;ldquo;task&amp;rdquo;.</description></item></channel></rss>
+Objective Setting-Up To adapt the dynamic environment, we require a learned model $p_{\theta}^$ to adapt, using an update rule $u_{\psi}^$ after seeing M data points from some new &amp;ldquo;task&amp;rdquo;.</description></item></channel></rss>
