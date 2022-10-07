@@ -112,7 +112,7 @@ $$
 
 The corresponding code:
 
-```python
+```python {linenos=true}
 def __f(self, i):
     return snp.dot((self.alpha * self.y), self.K[i, :]) + self.b
 ```
@@ -263,7 +263,7 @@ $$
 
 The corresponding code:
 
-```python
+```python {linenos=true}
 def __E(self, i):
     return self.__f(i) - self.y[i]
 
@@ -348,7 +348,7 @@ $$
 
 The corresponding code:
 
-```python
+```python {linenos=true}
 def __bound(self, i, j):
         if self.y[i] == self.y[j]:
             B_U = min(self.C, self.alpha[j] + self.alpha[i])
@@ -383,7 +383,7 @@ $$
 
 The corresponding code:
 
-```python
+```python {linenos=true}
 def __update_alpha_i(self, i, j, alpha_j_star):
     return self.alpha[i] + self.y[i] * self.y[j] * (self.alpha[j] - alpha_j_star)
 ```
@@ -428,7 +428,7 @@ $$
 
 The code of updating bias.
 
-```python
+```python {linenos=true}
 def __update_b(self, i, j, alpha_i_star, alpha_j_star, E_i, E_j):
         b_star = 0
         b_i_star = -E_i - self.y[i] * self.K[i, i] * (alpha_i_star - self.alpha[i]) - self.y[j] * self.K[j, i] * (alpha_j_star - self.alpha[j]) + self.b
@@ -513,7 +513,7 @@ while($move > \epsilon$ and $iter \leq \text{max-iter}$):
 
 Here is the Python code:
 
-```python
+```python {linenos=true}
 def fit(self, X, y):
         self.X = np.array(X)
         self.y = np.reshape(np.array(y), (-1, ))

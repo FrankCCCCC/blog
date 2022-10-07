@@ -27,7 +27,7 @@ cover:
 
 參考[PaperMod ExampleSite的gh-pages.yml設定](https://github.com/adityatelange/hugo-PaperMod/blob/exampleSite/.github/workflows/gh-pages.yml)，自己再作一些修改，大致如下
 
-```
+```yaml {linenos=true}
 name: Build GH-Pages
 
 on:
@@ -94,7 +94,7 @@ jobs:
 
 首先在安裝好的主題裡面`layouts/partials/mathjax_support.html`新增`.html`檔
 
-```
+```html {linenos=true}
 <script>
   MathJax = {
     tex: {
@@ -123,14 +123,14 @@ jobs:
 
 在`layouts/partials/header.html`的`</head>` tag裡面再新增這段code
 
-```
+```html {linenos=true}
 {{ partial "mathjax_support.html" . }}
 ```
 ### Step 3
 
 最後在`assets/css/header.css`檔裡面再加上這段code，如果沒有這個檔案，就把code加到所有頁面都會用到的CSS檔
 
-```
+```css {linenos=true}
 code.has-jax {
     -webkit-font-smoothing: antialiased;
     background: inherit !important;
