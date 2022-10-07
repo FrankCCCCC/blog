@@ -1,7 +1,7 @@
 ---
 title: "An SSH Guide"
 date: 2022-10-07T17:10:32+08:00
-draft: true
+draft: false
 author: SY Chou
 weight: 1
 
