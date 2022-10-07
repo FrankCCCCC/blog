@@ -198,7 +198,7 @@ If you don't save the key in the default file ``~/.ssh/id_rsa``, please replace 
 Show the public key
 
 ```bash {linenos=true}
-cat ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
 ```
 
 The you may see your public key
