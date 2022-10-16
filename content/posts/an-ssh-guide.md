@@ -6,7 +6,7 @@ author: SY Chou
 weight: 1
 
 description: "Some useful SSH tricks"
-categories: ["linux", "machine learning"]
+categories: ["linux"]
 series: []
 tags: ["Linux", "SSH", "Github"]
 
