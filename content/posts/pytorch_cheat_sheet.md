@@ -40,3 +40,31 @@ The above code will show
 PyTorch detected number of availabel devices: 2
 ```
 
+## Set Up Visible Devices For HUggingFace Accelerate
+
+## Use ``Subset`` Of HuggingFace ``datasets``
+
+Remember that whenever you use the ``Subset``, you MUST use list as selected indice.
+
+```python
+from datasets import load_dataset
+from torch.utils.data import Subset
+import torchvision.transforms as transforms
+
+ds = load_dataset("mnist")
+sub_ds = Subset(ds['train'], [1, 3, 5])
+print(transforms.PILToTensor()(sub_ds[0]['image']).shape)
+```
+
+If you use ``torch.Tensor`` as selected indice like following code, you will get an Error message: ``TypeError: len() of a 0-d tensor``.
+
+```python
+import torch
+from datasets import load_dataset
+from torch.utils.data import Subset
+import torchvision.transforms as transforms
+
+ds = load_dataset("mnist")
+sub_ds = Subset(ds['train'], torch.tensor([1, 3, 5]))
+print(transforms.PILToTensor()(sub_ds[0]['image']).shape)
+```
