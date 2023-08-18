@@ -23,6 +23,13 @@ cover:
 
 ## Dockerfiles
 
+Refers to
+- [Docker Hub: continuumio/anaconda3](https://hub.docker.com/r/continuumio/anaconda3)
+- [GitHub: docker-images](https://github.com/ContinuumIO/docker-images)
+- [StackOverflow: Switching users inside Docker image to a non-root user](https://stackoverflow.com/questions/24549746/switching-users-inside-docker-image-to-a-non-root-user)
+- [StackOverflow: Docker set user password non-interactively](https://stackoverflow.com/questions/66190675/docker-set-user-password-non-interactively)
+
+
 ```dockerfile
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
@@ -146,6 +153,8 @@ docker exec -it conda bash
 
 ## Dev Container Configuration
 
+Refers to: [Create a Dev Container](https://code.visualstudio.com/docs/devcontainers/create-dev-container#_use-docker-compose)
+
 ``Ctrl+Shft+P`` and select ``Dev Containers: Open Attached Container Configuration File``or ``Dev Containers: Add Dev Container Configuration Files``. Add the following property into configuration
 
 ```json
@@ -172,4 +181,31 @@ RUN apt update && apt install python3-pip -y
 RUN pip3 install numpy scipy six wheel
 RUN pip3 install --upgrade "jax[cuda11_local]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
+```
+
+You can test with following command
+
+Build Image
+
+```bash
+docker build -f Dockerfile --tag=jax:1.0 .
+```
+
+Create Container
+
+```bash
+docker run -it -d --gpus all --name jax --shm-size 200G -p 5001:6006 jax:1.0
+```
+
+Attach Shell to the Container
+
+```bash
+docker exec -it jax bash
+```
+
+Test Jax GPU Access
+
+```bash
+su user
+python -c 'import jax; print(f"Devices: {jax.local_devices()}")'
 ```
